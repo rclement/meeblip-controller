@@ -7,5 +7,5 @@ install:
   - cinst python3
 
 build_script:
-  - python3 build.py
+  - python build.py
 

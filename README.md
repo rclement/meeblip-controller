@@ -1,6 +1,7 @@
 # Meeblip Controller
 
-[![Build Status](https://travis-ci.org/rclement/meeblip-controller.svg)](https://travis-ci.org/rclement/meeblip-controller)
+[![Build Status Travis-CI](https://travis-ci.org/rclement/meeblip-controller.svg)](https://travis-ci.org/rclement/meeblip-controller)
+[![Build status AppVeyor](https://ci.appveyor.com/api/projects/status/ub29w4jlrih593ox?svg=true)](https://ci.appveyor.com/project/rclement/meeblip-controller)
 
 MIDI controller for the [Meeblip Anode](https://meeblip.com/products/meeblip-anode-synth) synthesizer,
 available on MacOS and Windows as an audio plug-in (VST, VST3, AU) and a standalone app.
