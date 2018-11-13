@@ -75,7 +75,7 @@ def build_plugin():
 
         os.chdir(root_path_rel)
     elif platform_name == 'Windows':
-        for platform in platforms:
+        for platform in supported_platforms:
             plat_build_path = os.path.abspath(os.path.join(build_path, platform))
             if not os.path.exists(plat_build_path):
                 os.makedirs(plat_build_path)
