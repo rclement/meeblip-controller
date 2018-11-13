@@ -1,11 +1,10 @@
 environment:
+  PYTHON: C:\Python37-x64
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       GENERATOR: "Visual Studio 15 2017"
 
 install:
-  - cinst python
-  - refreshenv
   - python --version
 
 build_script:
