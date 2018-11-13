@@ -102,11 +102,19 @@ def build_plugin():
             os.chdir(root_path_rel)
 
 
+def build_installer():
+    if platform_name == 'Darwin':
+        _run('packagesbuild -v installer/meeblip-controller.pkgproj')
+    elif platform_name == 'Windows':
+        _run('iscc "installer\meeblip-controller.iss"')
+
+
 def build_all():
     check_platform()
     init_dependencies()
     build_frut()
     build_plugin()
+    build_installer()
 
 
 if __name__ == '__main__':

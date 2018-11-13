@@ -32,7 +32,9 @@ Currently supported features:
 - `git`
 - `python` >= 3.5
 - `cmake` >= 3.4
+- `Packages` (MacOS only)
 - `XCode` >= 9.0 (MacOS only)
+- `InnoSetup` (Windows only)
 - `Visual Studio` >= 2017 (Windows only)
 
 ## Automated
@@ -67,6 +69,11 @@ Currently supported features:
     cmake .. -G ["XCode" | "Visual Studio 15 2017"] -A ["Win32" | "x64"]
     cmake --build . --clean-first --config ["Debug" | "Release"]
 ```
+
+4. Build the installer
+
+- MacOS: `packagesbuild -v installer/meeblip-controller.pkgproj`
+- Windows: `iscc "installer\meeblip-controller.iss"`
 
 
 # License

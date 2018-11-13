@@ -8,6 +8,8 @@ matrix:
         homebrew:
           packages:
             - python3
+          casks:
+            - packages
 
 script:
   - cmake --version
