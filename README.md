@@ -8,6 +8,8 @@ Inspired by [Meeblip Web Editor](https://editor.meeblip.com) and
 
 Built using the [JUCE](https://juce.com) framework.
 
+![Meeblip Controller Screenshot](ext/meeblip-controller-screenshot.png)
+
 
 # Features
 
