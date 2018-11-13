@@ -79,21 +79,21 @@ def build_plugin():
 
         os.chdir(root_path_rel)
     elif platform_name == 'Windows':
-        for platform in supported_platforms:
-            plat_build_path = os.path.abspath(os.path.join(build_path, platform))
-            if not os.path.exists(plat_build_path):
-                os.makedirs(plat_build_path)
+        for arch in build_archs_win:
+            arch_build_path = os.path.abspath(os.path.join(build_path, arch))
+            if not os.path.exists(arch_build_path):
+                os.makedirs(arch_build_path)
 
             root_path = os.getcwd()
-            os.chdir(plat_build_path)
+            os.chdir(arch_build_path)
             root_path_rel = os.path.relpath(root_path)
 
             cmd = (
-                'cmake {path} -G "Visual Studio 15 2017" -A {platform}'
-            ).format(platform=platform, path=root_path_rel)
+                'cmake {path} -G "Visual Studio 15 2017" -A {arch}'
+            ).format(arch=arch, path=root_path_rel)
             _run(cmd)
 
-            for config in configs:
+            for config in build_configs:
                 cmd = (
                     'cmake --build . --clean-first --config {config}'
                 ).format(config=config)
