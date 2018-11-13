@@ -4,7 +4,7 @@ environment:
       GENERATOR: "Visual Studio 15 2017"
 
 install:
-  - cinst python3
+  - cinst python
 
 build_script:
   - python build.py
