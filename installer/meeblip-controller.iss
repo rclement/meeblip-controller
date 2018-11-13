@@ -1,5 +1,5 @@
 #define AppName             "Meeblip Controller"
-#define AppNameUnderscore   StringChange(MyAppName, " ", "_")
+#define AppNameUnderscore   StringChange(AppName, " ", "_")
 #define AppVersion          "0.1.0"
 #define AppPublisher        "Romain Clement"
 #define AppURL              ""

@@ -10,7 +10,7 @@ supported_platforms = ['Darwin', 'Windows']
 juce_path = os.path.abspath('sdks/juce')
 frut_path = os.path.abspath('sdks/frut')
 
-build_configs = ['Debug', 'Release']
+build_configs = ['Release']
 build_archs_win = ['Win32', 'x64']
 
 
