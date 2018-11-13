@@ -27,8 +27,45 @@ Currently supported features:
 
 # Build
 
+## Requirements
+
+- `git`
+- `python` >= 3.5
+- `cmake` >= 3.4
+- `XCode` >= 9.0 (MacOS only)
+- `Visual Studio` >= 2017 (Windows only)
+
+## Automated
+
 ```
-    python3 build.py
+    python build.py
+```
+
+## Manual
+
+1. Checkout submodules
+
+```
+    git submodule update --init --recursive
+```
+
+2. Build `FRUT`
+
+```
+    mkdir -p sdks/frut/build
+    cd sdks/frut/build
+    cmake .. -DCMAKE_INSTALL_PREFIX=../prefix -DJUCE_ROOT=../../juce
+    cmake --build . --target install
+    cd -
+```
+
+3. Build the plugin
+
+```
+    mkdir -p build
+    cd build
+    cmake .. -G ["XCode" | "Visual Studio 15 2017"] -A ["Win32" | "x64"]
+    cmake --build . --clean-first --config ["Debug" | "Release"]
 ```
 
 

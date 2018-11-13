@@ -5,11 +5,9 @@ environment:
   EXECUTABLE: python.exe
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      GENERATOR: "Visual Studio 15 2017"
-
-install:
-  - '%PYTHON%\%EXECUTABLE% --version'
 
 build_script:
+  - 'cmake --version'
+  - '%PYTHON%\%EXECUTABLE% --version'
   - '%PYTHON%\%EXECUTABLE% build.py'
 

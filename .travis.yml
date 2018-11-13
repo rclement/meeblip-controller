@@ -10,5 +10,7 @@ matrix:
             - python3
 
 script:
+  - cmake --version
+  - python3 --version
   - python3 build.py
 
