@@ -14,6 +14,13 @@ build_configs = ['Debug', 'Release']
 build_archs_win = ['Win32', 'x64']
 
 
+def _run(cmd):
+  if platform_name == 'Darwin':
+    subprocess.run([cmd], shell=True)
+  elif platform_name == 'Windows':
+    subprocess.run(cmd, shell=True)
+
+
 def check_platform():
     if platform_name not in supported_platforms:
         print('Platform currently not supported:', platform_name)
@@ -21,8 +28,7 @@ def check_platform():
 
 
 def init_dependencies():
-    cmd = 'git submodule update --init --recursive'
-    subprocess.run(cmd.split())
+    _run('git submodule update --init --recursive')
 
 
 def build_frut():
@@ -41,12 +47,9 @@ def build_frut():
     cmd = (
         'cmake {path} -DCMAKE_INSTALL_PREFIX=../prefix -DJUCE_ROOT={juce_path}'
     ).format(path=frut_path_rel, juce_path=juce_path_rel)
-    subprocess.run([cmd], shell=True)
+    _run(cmd)
 
-    cmd = (
-        'cmake --build . --target install'
-    )
-    subprocess.run([cmd], shell=True)
+    _run('cmake --build . --target install')
 
     os.chdir(root_path_rel)
 
@@ -65,13 +68,13 @@ def build_plugin():
         cmd = (
             'cmake {path} -G Xcode'
         ).format(path=root_path_rel)
-        subprocess.run([cmd], shell=True)
+        _run(cmd)
 
         for config in build_configs:
             cmd = (
                 'cmake --build . --clean-first --config {config}'
             ).format(config=config)
-            subprocess.run([cmd], shell=True)
+            _run(cmd)
 
         os.chdir(root_path_rel)
     elif platform_name == 'Windows':
@@ -87,13 +90,13 @@ def build_plugin():
             cmd = (
                 'cmake {path} -G "Visual Studio 15 2017" -A {platform}'
             ).format(platform=platform, path=root_path_rel)
-            subprocess.run(cmd, shell=True)
+            _run(cmd)
 
             for config in configs:
                 cmd = (
                     'cmake --build . --clean-first --config {config}'
                 ).format(config=config)
-                subprocess.run(cmd, shell=True)
+                _run(cmd)
 
             os.chdir(root_path_rel)
 
