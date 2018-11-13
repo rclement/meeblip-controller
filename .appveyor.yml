@@ -1,0 +1,11 @@
+environment:
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      GENERATOR: "Visual Studio 15 2017"
+
+install:
+  - cinst python3
+
+build_script:
+  - python3 build.py
+
