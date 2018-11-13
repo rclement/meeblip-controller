@@ -55,10 +55,11 @@ def build_frut():
 
 
 def build_plugin():
+    build_path = os.path.abspath('build')
+
     if platform_name == 'Darwin':
         root_path = os.getcwd()
 
-        build_path = os.path.abspath('build')
         if not os.path.exists(build_path):
             os.makedirs(build_path)
 
