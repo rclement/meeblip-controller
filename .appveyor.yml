@@ -5,6 +5,8 @@ environment:
 
 install:
   - cinst python
+  - refreshenv
+  - python --version
 
 build_script:
   - python build.py
