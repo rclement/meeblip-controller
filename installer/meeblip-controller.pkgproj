@@ -2612,7 +2612,7 @@
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>Common</string>
+				<string>Meeblip Controller</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -2624,7 +2624,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<false/>
 				<key>VERSION</key>
-				<string>1.0</string>
+				<string>0.1.0</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -2843,6 +2843,8 @@
 			<dict>
 				<key>LOCALIZATIONS</key>
 				<array/>
+				<key>MODE</key>
+				<integer>0</integer>
 			</dict>
 			<key>README</key>
 			<dict>
@@ -3087,7 +3089,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>Meeblip Controller</string>
+			<string>Meeblip Controller - 0.1.0</string>
 			<key>PAYLOAD_ONLY</key>
 			<false/>
 			<key>TREAT_MISSING_PRESENTATION_DOCUMENTS_AS_WARNING</key>
