@@ -15,6 +15,7 @@ DefaultDirName          = C:\ProgramData\{#AppPublisher}\{#AppName}
 DisableDirPage          = yes
 DefaultGroupName        = {#AppPublisher}
 DisableProgramGroupPage = yes
+OutputDir               = ..\build\installers
 OutputBaseFilename      = {#AppPublisher} - {#AppName} - {#AppVersion}
 Compression             = lzma
 SolidCompression        = yes
@@ -34,9 +35,9 @@ Name: "{#AppNameUnderscore}/vst3_32"; Description: "VST3 (32 bits)";            
 Name: "{#AppNameUnderscore}/vst3_64"; Description: "VST3 (64 bits)";                Types: full; Check: IsWin64;
 
 [Files]
-Source: "..\build\Win32\Release\{#AppName}.dll";    DestDir: "{pf32}\Steinberg\VstPlugins"; DestName: "{#AppName}.dll"; Components: {#AppNameUnderscore}/vst2_32; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "..\build\x64\Release\{#AppName}.dll";      DestDir: "{pf64}\Steinberg\VstPlugins"; DestName: "{#AppName}.dll"; Components: {#AppNameUnderscore}/vst2_64; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "..\build\Win32\Release\VST\{#AppName}.dll";    DestDir: "{pf32}\Steinberg\VstPlugins"; DestName: "{#AppName}.dll"; Components: {#AppNameUnderscore}/vst2_32; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "..\build\x64\Release\VST\{#AppName}.dll";      DestDir: "{pf64}\Steinberg\VstPlugins"; DestName: "{#AppName}.dll"; Components: {#AppNameUnderscore}/vst2_64; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 
-Source: "..\build\Win32\Release\{#AppName}.vst3";   DestDir: "{cf32}\VST3"; DestName: "{#AppName}.vst3"; Components: {#AppNameUnderscore}/vst3_32; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "..\build\x64\Release\{#AppName}.vst3";     DestDir: "{cf64}\VST3"; DestName: "{#AppName}.vst3"; Components: {#AppNameUnderscore}/vst3_64; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "..\build\Win32\Release\VST3\{#AppName}.vst3";   DestDir: "{cf32}\VST3"; DestName: "{#AppName}.vst3"; Components: {#AppNameUnderscore}/vst3_32; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "..\build\x64\Release\VST3\{#AppName}.vst3";     DestDir: "{cf64}\VST3"; DestName: "{#AppName}.vst3"; Components: {#AppNameUnderscore}/vst3_64; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 
