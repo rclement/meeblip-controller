@@ -1,28 +1,52 @@
 cmake_minimum_required(VERSION 3.4)
 
-project("MeeblipController")
+set(APP_NAME                "Meeblip Controller")
+set(APP_DESCRIPTION         "MIDI controller for the Meeblip Anode synthesizer")
+set(APP_VERSION             "0.1.0")
+set(APP_MANUFACTURER_NAME   "Romain Clement")
+set(APP_MANUFACTURER_URL    "www.romain-clement.net")
+set(APP_MANUFACTURER_EMAIL  "contact@romain-clement.net")
+set(APP_BUNDLE_ID           "net.romainclement.meeblipcontroller")
+set(APP_ROOT_DIR            "${CMAKE_CURRENT_LIST_DIR}")
+if(APPLE)
+    set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}")
+else()
+    set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/..")
+endif()
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/sdks/frut/prefix/FRUT/cmake")
+configure_file(
+    "${APP_ROOT_DIR}/installer/meeblip-controller.pkgproj"
+    "${APP_BUILD_DIR}/installer/meeblip-controller.pkgproj"
+)
+
+configure_file(
+    "${APP_ROOT_DIR}/installer/meeblip-controller.iss"
+    "${APP_BUILD_DIR}/installer/meeblip-controller.iss"
+)
+
+project("${APP_NAME}")
+
+list(APPEND CMAKE_MODULE_PATH "${APP_ROOT_DIR}/sdks/frut/prefix/FRUT/cmake")
 include(Reprojucer)
 
 jucer_project_begin(
 )
 
 jucer_project_settings(
-  PROJECT_NAME "Meeblip Controller"
   PROJECT_TYPE "Audio Plug-in"
-  PROJECT_VERSION "0.1.0"
+  PROJECT_NAME "${APP_NAME}"
+  PROJECT_VERSION "${APP_VERSION}"
 
-  COMPANY_NAME "Romain Clement"
-  COMPANY_COPYRIGHT "Romain Clement"
-  COMPANY_WEBSITE "www.romain-clement.net"
-  COMPANY_EMAIL "contact@romain-clement.net"
+  COMPANY_NAME "${APP_MANUFACTURER_NAME}"
+  COMPANY_COPYRIGHT "${APP_MANUFACTURER_NAME}"
+  COMPANY_WEBSITE "${APP_MANUFACTURER_URL}"
+  COMPANY_EMAIL "${APP_MANUFACTURER_EMAIL}"
 
   REPORT_JUCE_APP_USAGE OFF
   DISPLAY_THE_JUCE_SPLASH_SCREEN OFF
   # SPLASH_SCREEN_COLOUR
 
-  BUNDLE_IDENTIFIER "net.romainclement.MeeblipController"
+  BUNDLE_IDENTIFIER "${APP_BUNDLE_ID}"
 
   INCLUDE_BINARYDATA ON
   BINARYDATA_NAMESPACE "AssetsData"
@@ -31,7 +55,9 @@ jucer_project_settings(
   CXX_LANGUAGE_STANDARD "C++14"
   PREPROCESSOR_DEFINITIONS
     "DONT_SET_USING_JUCE_NAMESPACE=1"
-  # HEADER_SEARCH_PATHS
+  HEADER_SEARCH_PATHS
+    "sdks/grape"
+    "src"
 )
 
 jucer_audio_plugin_settings(
@@ -43,16 +69,16 @@ jucer_audio_plugin_settings(
 
   # PLUGIN_CHARACTERISTICS
 
-  PLUGIN_NAME "Meeblip Controller"
-  PLUGIN_DESCRIPTION "Controller for the Meeblip synthesizer"
+  PLUGIN_NAME "${APP_NAME}"
+  PLUGIN_DESCRIPTION "${APP_DESCRIPTION}"
 
-  PLUGIN_MANUFACTURER "Romain Clement"
+  PLUGIN_MANUFACTURER "${APP_MANUFACTURER_NAME}"
   PLUGIN_MANUFACTURER_CODE "RMNC"
   PLUGIN_CODE "MBCT"
 
   # PLUGIN_CHANNEL_CONFIGURATIONS
 
-  PLUGIN_AAX_IDENTIFIER "net.romainclement.MeeblipController"
+  PLUGIN_AAX_IDENTIFIER "${APP_BUNDLE_ID}"
   PLUGIN_AU_EXPORT_PREFIX "MeeblipControllerAU"
 
   PLUGIN_AU_MAIN_TYPE "kAudioUnitType_Effect"
@@ -296,9 +322,6 @@ jucer_export_target_configuration(
   "Xcode (MacOSX)"
   NAME "Debug"
   DEBUG_MODE ON
-  HEADER_SEARCH_PATHS
-    "sdks/grape"
-    "src"
   OSX_DEPLOYMENT_TARGET
     "10.9"
   OSX_ARCHITECTURE
@@ -309,9 +332,6 @@ jucer_export_target_configuration(
   "Xcode (MacOSX)"
   NAME "Release"
   DEBUG_MODE OFF
-  HEADER_SEARCH_PATHS
-    "sdks/grape"
-    "src"
   OSX_DEPLOYMENT_TARGET
     "10.9"
   OSX_ARCHITECTURE
@@ -328,18 +348,12 @@ jucer_export_target_configuration(
   "Visual Studio 2017"
   NAME "Debug"
   DEBUG_MODE ON
-  HEADER_SEARCH_PATHS
-    "sdks/grape"
-    "src"
 )
 
 jucer_export_target_configuration(
   "Visual Studio 2017"
   NAME "Release"
   DEBUG_MODE OFF
-  HEADER_SEARCH_PATHS
-    "sdks/grape"
-    "src"
 )
 
 jucer_project_end()

@@ -38,9 +38,9 @@
 									<key>GID</key>
 									<integer>80</integer>
 									<key>PATH</key>
-									<string>../build/Release/Meeblip Controller.app</string>
+									<string>${APP_BUILD_DIR}/Release/Meeblip Controller.app</string>
 									<key>PATH_TYPE</key>
-									<integer>1</integer>
+									<integer>0</integer>
 									<key>PERMISSIONS</key>
 									<integer>493</integer>
 									<key>TYPE</key>
@@ -497,7 +497,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<false/>
 				<key>VERSION</key>
-				<string>0.1.0</string>
+				<string>${APP_VERSION}</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -579,9 +579,9 @@
 															<key>GID</key>
 															<integer>0</integer>
 															<key>PATH</key>
-															<string>../build/Release/Meeblip Controller.vst</string>
+															<string>${APP_BUILD_DIR}/Release/Meeblip Controller.vst</string>
 															<key>PATH_TYPE</key>
-															<integer>1</integer>
+															<integer>0</integer>
 															<key>PERMISSIONS</key>
 															<integer>493</integer>
 															<key>TYPE</key>
@@ -1047,7 +1047,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<false/>
 				<key>VERSION</key>
-				<string>0.1.0</string>
+				<string>${APP_VERSION}</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -1129,9 +1129,9 @@
 															<key>GID</key>
 															<integer>0</integer>
 															<key>PATH</key>
-															<string>../build/Release/Meeblip Controller.vst3</string>
+															<string>${APP_BUILD_DIR}/Release/Meeblip Controller.vst3</string>
 															<key>PATH_TYPE</key>
-															<integer>1</integer>
+															<integer>0</integer>
 															<key>PERMISSIONS</key>
 															<integer>493</integer>
 															<key>TYPE</key>
@@ -1582,7 +1582,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<false/>
 				<key>VERSION</key>
-				<string>0.1.0</string>
+				<string>${APP_VERSION}</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -1664,9 +1664,9 @@
 															<key>GID</key>
 															<integer>0</integer>
 															<key>PATH</key>
-															<string>../build/Release/Meeblip Controller.component</string>
+															<string>${APP_BUILD_DIR}/Release/Meeblip Controller.component</string>
 															<key>PATH_TYPE</key>
-															<integer>1</integer>
+															<integer>0</integer>
 															<key>PERMISSIONS</key>
 															<integer>493</integer>
 															<key>TYPE</key>
@@ -2117,7 +2117,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<false/>
 				<key>VERSION</key>
-				<string>0.1.0</string>
+				<string>${APP_VERSION}</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -2171,9 +2171,9 @@
 															<key>GID</key>
 															<integer>80</integer>
 															<key>PATH</key>
-															<string>resources/uninstall.command</string>
+															<string>${APP_ROOT_DIR}/installer/resources/uninstall.command</string>
 															<key>PATH_TYPE</key>
-															<integer>1</integer>
+															<integer>0</integer>
 															<key>PERMISSIONS</key>
 															<integer>509</integer>
 															<key>TYPE</key>
@@ -2624,7 +2624,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<false/>
 				<key>VERSION</key>
-				<string>0.1.0</string>
+				<string>${APP_VERSION}</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -2916,9 +2916,9 @@
 			<key>BUILD_PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>../build/installers</string>
+				<string>${APP_BUILD_DIR}/installer/output</string>
 				<key>PATH_TYPE</key>
-				<integer>1</integer>
+				<integer>0</integer>
 			</dict>
 			<key>EXCLUDED_FILES</key>
 			<array>
@@ -3089,7 +3089,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>Meeblip Controller - 0.1.0</string>
+			<string>${APP_NAME} - ${APP_VERSION}</string>
 			<key>PAYLOAD_ONLY</key>
 			<false/>
 			<key>TREAT_MISSING_PRESENTATION_DOCUMENTS_AS_WARNING</key>

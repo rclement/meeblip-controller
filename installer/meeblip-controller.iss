@@ -1,8 +1,10 @@
-#define AppName             "Meeblip Controller"
+#define AppName             "${APP_NAME}"
 #define AppNameUnderscore   StringChange(AppName, " ", "_")
-#define AppVersion          "0.1.0"
-#define AppPublisher        "Romain Clement"
-#define AppURL              ""
+#define AppVersion          "${APP_VERSION}"
+#define AppPublisher        "${APP_MANUFACTURER_NAME}"
+#define AppUrl              "${APP_MANUFACTURER_URL}"
+#define AppRootDir          "${APP_ROOT_DIR}"
+#define AppBuildDir         "${APP_BUILD_DIR}"
 
 [Setup]
 AppName                 = {#AppName}
@@ -15,7 +17,7 @@ DefaultDirName          = {commonappdata}\{#AppPublisher}\{#AppName}
 DisableDirPage          = yes
 DefaultGroupName        = {#AppPublisher}
 DisableProgramGroupPage = no
-OutputDir               = ..\build\installers
+OutputDir               = {#AppBuildDir}\installer\output
 OutputBaseFilename      = {#AppName} - {#AppVersion}
 Compression             = lzma
 SolidCompression        = yes
@@ -38,14 +40,14 @@ Name: "{#AppNameUnderscore}/vst3_32";       Description: "VST3 (32-bit)";       
 Name: "{#AppNameUnderscore}/vst3_64";       Description: "VST3 (64-bit)";       Types: full; Check: IsWin64;
 
 [Files]
-Source: "..\build\Win32\Release\Standalone Plugin\{#AppName}.exe";  DestDir: "{pf32}\{#AppPublisher}\{#AppName}"; DestName: "{#AppName}.exe"; Components: {#AppNameUnderscore}/standalone_32; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "..\build\x64\Release\Standalone Plugin\{#AppName}.exe";    DestDir: "{pf64}\{#AppPublisher}\{#AppName}"; DestName: "{#AppName}.exe"; Components: {#AppNameUnderscore}/standalone_64; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppBuildDir}\Win32\Release\Standalone Plugin\{#AppName}.exe";  DestDir: "{pf32}\{#AppPublisher}\{#AppName}"; DestName: "{#AppName}.exe"; Components: {#AppNameUnderscore}/standalone_32; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppBuildDir}\x64\Release\Standalone Plugin\{#AppName}.exe";    DestDir: "{pf64}\{#AppPublisher}\{#AppName}"; DestName: "{#AppName}.exe"; Components: {#AppNameUnderscore}/standalone_64; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 
-Source: "..\build\Win32\Release\VST\{#AppName}.dll";    DestDir: "{pf32}\Steinberg\VstPlugins"; DestName: "{#AppName}.dll"; Components: {#AppNameUnderscore}/vst2_32; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "..\build\x64\Release\VST\{#AppName}.dll";      DestDir: "{pf64}\Steinberg\VstPlugins"; DestName: "{#AppName}.dll"; Components: {#AppNameUnderscore}/vst2_64; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppBuildDir}\Win32\Release\VST\{#AppName}.dll";    DestDir: "{pf32}\Steinberg\VstPlugins"; DestName: "{#AppName}.dll"; Components: {#AppNameUnderscore}/vst2_32; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppBuildDir}\x64\Release\VST\{#AppName}.dll";      DestDir: "{pf64}\Steinberg\VstPlugins"; DestName: "{#AppName}.dll"; Components: {#AppNameUnderscore}/vst2_64; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 
-Source: "..\build\Win32\Release\VST3\{#AppName}.vst3";   DestDir: "{cf32}\VST3"; DestName: "{#AppName}.vst3"; Components: {#AppNameUnderscore}/vst3_32; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "..\build\x64\Release\VST3\{#AppName}.vst3";     DestDir: "{cf64}\VST3"; DestName: "{#AppName}.vst3"; Components: {#AppNameUnderscore}/vst3_64; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppBuildDir}\Win32\Release\VST3\{#AppName}.vst3";   DestDir: "{cf32}\VST3"; DestName: "{#AppName}.vst3"; Components: {#AppNameUnderscore}/vst3_32; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppBuildDir}\x64\Release\VST3\{#AppName}.vst3";     DestDir: "{cf64}\VST3"; DestName: "{#AppName}.vst3"; Components: {#AppNameUnderscore}/vst3_64; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 
-; Source: ".\resources\presets\*"; DestDir: "{app}\presets"; Components: {#AppNameUnderscore}; Flags: ignoreversion createallsubdirs recursesubdirs overwritereadonly uninsremovereadonly;
+; Source: "{#AppRootDir}\installer\resources\presets\*"; DestDir: "{app}\presets"; Components: {#AppNameUnderscore}; Flags: ignoreversion createallsubdirs recursesubdirs overwritereadonly uninsremovereadonly;
 

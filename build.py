@@ -104,9 +104,9 @@ def build_plugin():
 
 def build_installer():
     if platform_name == 'Darwin':
-        _run('packagesbuild -v installer/meeblip-controller.pkgproj')
+        _run('packagesbuild -v build/installer/meeblip-controller.pkgproj')
     elif platform_name == 'Windows':
-        _run('iscc "installer\meeblip-controller.iss"')
+        _run('iscc "build\installer\meeblip-controller.iss"')
 
 
 def build_all():
