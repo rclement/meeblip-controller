@@ -30,8 +30,7 @@ namespace ui {
 
 ControlPanelAnode::ControlPanelAnode (grape::parameters::ParameterManager& parameters,
                                       controller::MidiController& midiController)
-    : mParameters (parameters)
-    , mMidiController (midiController)
+    : mMidiController (midiController)
     , mEnvelopeAttack (parameters, common::ParameterId::idEnvelopeAttack, "ATTACK")
     , mEnvelopeDecay (parameters, common::ParameterId::idEnvelopeDecay, "DECAY")
     , mEnvelopeSustain (parameters, common::ParameterId::idSustain, "SUSTAIN")

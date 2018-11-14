@@ -45,7 +45,6 @@ public: // juce::Component
     void resized() override;
 
 private:
-    PluginProcessor&    	mProcessor;
     ui::CustomLookAndFeel   mLookAndFeel;
     ui::PresetPanel         mPresetPanel;
     ui::ControlPanelAnode   mControlPanel;

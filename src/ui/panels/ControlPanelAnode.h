@@ -46,8 +46,7 @@ public: // juce::Component
     void paint (juce::Graphics&) override;
 
 private:
-    grape::parameters::ParameterManager&    mParameters;
-    controller::MidiController&             mMidiController;
+    controller::MidiController& mMidiController;
 
     juce::DrawableImage     mMeeblipLogo;
     juce::DrawableImage     mAnodeLogo;
