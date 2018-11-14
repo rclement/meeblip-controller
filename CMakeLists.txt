@@ -251,11 +251,6 @@ jucer_project_module(
 )
 
 jucer_project_module(
-  juce_cryptography
-  PATH "sdks/juce/modules"
-)
-
-jucer_project_module(
   juce_data_structures
   PATH "sdks/juce/modules"
 )
@@ -289,17 +284,6 @@ jucer_project_module(
   PATH "sdks/juce/modules"
   # JUCE_WEB_BROWSER
   # JUCE_ENABLE_LIVE_CONSTANT_EDITOR
-)
-
-jucer_project_module(
-  juce_opengl
-  PATH "sdks/juce/modules"
-)
-
-jucer_project_module(
-  juce_video
-  PATH "sdks/juce/modules"
-  # JUCE_USE_CAMERA
 )
 
 jucer_export_target(
