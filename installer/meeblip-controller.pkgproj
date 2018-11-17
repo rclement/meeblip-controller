@@ -38,7 +38,7 @@
 									<key>GID</key>
 									<integer>80</integer>
 									<key>PATH</key>
-									<string>${APP_BUILD_DIR}/Release/Meeblip Controller.app</string>
+									<string>${APP_BUILD_DIR}/Release/${APP_NAME}.app</string>
 									<key>PATH_TYPE</key>
 									<integer>0</integer>
 									<key>PERMISSIONS</key>
@@ -481,7 +481,7 @@
 				<key>FOLLOW_SYMBOLIC_LINKS</key>
 				<false/>
 				<key>IDENTIFIER</key>
-				<string>net.romainclement.meeblipcontroller.standalone</string>
+				<string>${APP_BUNDLE_ID}.standalone</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
@@ -579,7 +579,7 @@
 															<key>GID</key>
 															<integer>0</integer>
 															<key>PATH</key>
-															<string>${APP_BUILD_DIR}/Release/Meeblip Controller.vst</string>
+															<string>${APP_BUILD_DIR}/Release/${APP_NAME}.vst</string>
 															<key>PATH_TYPE</key>
 															<integer>0</integer>
 															<key>PERMISSIONS</key>
@@ -1031,7 +1031,7 @@
 				<key>FOLLOW_SYMBOLIC_LINKS</key>
 				<false/>
 				<key>IDENTIFIER</key>
-				<string>net.romainclement.meeblipcontroller.vst</string>
+				<string>${APP_BUNDLE_ID}.vst</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
@@ -1129,7 +1129,7 @@
 															<key>GID</key>
 															<integer>0</integer>
 															<key>PATH</key>
-															<string>${APP_BUILD_DIR}/Release/Meeblip Controller.vst3</string>
+															<string>${APP_BUILD_DIR}/Release/${APP_NAME}.vst3</string>
 															<key>PATH_TYPE</key>
 															<integer>0</integer>
 															<key>PERMISSIONS</key>
@@ -1566,7 +1566,7 @@
 				<key>FOLLOW_SYMBOLIC_LINKS</key>
 				<false/>
 				<key>IDENTIFIER</key>
-				<string>net.romainclement.meeblipcontroller.vst3</string>
+				<string>${APP_BUNDLE_ID}.vst3</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
@@ -1664,7 +1664,7 @@
 															<key>GID</key>
 															<integer>0</integer>
 															<key>PATH</key>
-															<string>${APP_BUILD_DIR}/Release/Meeblip Controller.component</string>
+															<string>${APP_BUILD_DIR}/Release/${APP_NAME}.component</string>
 															<key>PATH_TYPE</key>
 															<integer>0</integer>
 															<key>PERMISSIONS</key>
@@ -2101,7 +2101,7 @@
 				<key>FOLLOW_SYMBOLIC_LINKS</key>
 				<false/>
 				<key>IDENTIFIER</key>
-				<string>net.romainclement.meeblipcontroller.au</string>
+				<string>${APP_BUNDLE_ID}.au</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
@@ -2185,7 +2185,7 @@
 													<key>GID</key>
 													<integer>80</integer>
 													<key>PATH</key>
-													<string>Meeblip Controller</string>
+													<string>${APP_NAME}</string>
 													<key>PATH_TYPE</key>
 													<integer>2</integer>
 													<key>PERMISSIONS</key>
@@ -2608,11 +2608,11 @@
 				<key>FOLLOW_SYMBOLIC_LINKS</key>
 				<false/>
 				<key>IDENTIFIER</key>
-				<string>net.romainclement.meeblipcontroller.common</string>
+				<string>${APP_BUNDLE_ID}.common</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
-				<string>Meeblip Controller</string>
+				<string>${APP_NAME}</string>
 				<key>OVERWRITE_PERMISSIONS</key>
 				<false/>
 				<key>PAYLOAD_SIZE</key>
@@ -2864,7 +2864,7 @@
 						<key>LANGUAGE</key>
 						<string>English</string>
 						<key>VALUE</key>
-						<string>Meeblip Controller</string>
+						<string>${APP_NAME}</string>
 					</dict>
 				</array>
 			</dict>

@@ -316,6 +316,10 @@ jucer_export_target(
   "Xcode (MacOSX)"
   VST3_SDK_FOLDER
     "sdks/vst"
+  ICON_SMALL
+    "installer/resources/meeblip-icon@1x.png"
+  ICON_LARGE
+    "installer/resources/meeblip-icon@2x.png"
 )
 
 jucer_export_target_configuration(
@@ -342,6 +346,10 @@ jucer_export_target(
   "Visual Studio 2017"
   VST3_SDK_FOLDER
     "sdks/vst"
+  ICON_SMALL
+    "installer/resources/meeblip-icon@1x.png"
+  ICON_LARGE
+    "installer/resources/meeblip-icon@2x.png"
 )
 
 jucer_export_target_configuration(
