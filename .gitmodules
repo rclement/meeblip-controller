@@ -10,3 +10,6 @@
 [submodule "sdks/grape"]
 	path = sdks/grape
 	url = https://github.com/rclement/grape
+[submodule "sdks/pluginval"]
+	path = sdks/pluginval
+	url = https://github.com/Tracktion/pluginval
