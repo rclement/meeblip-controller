@@ -13,6 +13,7 @@ AppVerName              = {#AppName} {#AppVersion}
 AppPublisherURL         = {#AppUrl}
 AppSupportURL           = {#AppUrl}
 AppUpdatesURL           = {#AppUrl}
+AppCopyright            = Copyright (C) 2018 {#AppPublisher}
 DefaultDirName          = {commonappdata}\{#AppPublisher}\{#AppName}
 DisableDirPage          = yes
 DefaultGroupName        = {#AppPublisher}
@@ -22,6 +23,10 @@ OutputBaseFilename      = {#AppName} - {#AppVersion}
 Compression             = lzma
 SolidCompression        = yes
 Uninstallable           = yes
+UninstallDisplayIcon    = {#AppBuildDir}\x64\icon.ico
+SetupIconFile           = {#AppBuildDir}\x64\icon.ico
+WizardImageFile         = {#AppRootDir}\installer\resources\innosetup-wizard-large.bmp
+WizardSmallImageFile    = {#AppRootDir}\installer\resources\innosetup-wizard-small.bmp
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"

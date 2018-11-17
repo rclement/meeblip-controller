@@ -51,10 +51,10 @@ def build_frut():
     frut_path_rel = os.path.relpath(frut_path)
     juce_path_rel = os.path.relpath(juce_path)
 
-    cmd = (
+    _run(
         'cmake {path} -DCMAKE_INSTALL_PREFIX=../prefix -DJUCE_ROOT={juce_path}'
-    ).format(path=frut_path_rel, juce_path=juce_path_rel)
-    _run(cmd)
+            .format(path=frut_path_rel, juce_path=juce_path_rel)
+    )
 
     _run('cmake --build . --target install')
 
@@ -95,16 +95,13 @@ def build_plugin():
         os.chdir(build_path)
         root_path_rel = os.path.relpath(root_path)
 
-        cmd = (
-            'cmake {path} -G Xcode'
-        ).format(path=root_path_rel)
-        _run(cmd)
+        _run('cmake {path} -G Xcode'.format(path=root_path_rel))
 
         for config in build_configs:
-            cmd = (
+            _run(
                 'cmake --build . --clean-first --config {config}'
-            ).format(config=config)
-            _run(cmd)
+                    .format(config=config)
+            )
 
         os.chdir(root_path_rel)
     elif platform_name == 'Windows':
@@ -117,16 +114,16 @@ def build_plugin():
             os.chdir(arch_build_path)
             root_path_rel = os.path.relpath(root_path)
 
-            cmd = (
+            _run(
                 'cmake {path} -G "Visual Studio 15 2017" -A {arch}'
-            ).format(arch=arch, path=root_path_rel)
-            _run(cmd)
+                    .format(arch=arch, path=root_path_rel)
+            )
 
             for config in build_configs:
-                cmd = (
+                _run(
                     'cmake --build . --clean-first --config {config}'
-                ).format(config=config)
-                _run(cmd)
+                        .format(config=config)
+                )
 
             os.chdir(root_path_rel)
 
@@ -162,14 +159,33 @@ def validate_plugins():
             ]
 
     for p in plugin_paths:
-        _run(pluginval_bin_path + ' --strictness-level 5 --validate "' + p + '"')
+        _run(
+            '{pluginval_path} --strictness-level 5 --validate "{plugin_path}"'
+                .format(pluginval_path=pluginval_bin_path, plugin_path=p)
+        )
 
 
 def build_installer():
+    build_path = os.path.abspath(build_dir)
+
     if platform_name == 'Darwin':
-        _run('packagesbuild -v build/installer/meeblip-controller.pkgproj')
+        installer_path = os.path.join(
+            build_path, 'installer', 'meeblip-controller.pkgproj'
+        )
+
+        _run(
+            'packagesbuild -v "{installer_path}"'
+                .format(installer_path=installer_path)
+        )
     elif platform_name == 'Windows':
-        _run('iscc "build\installer\meeblip-controller.iss"')
+        installer_path = os.path.join(
+            build_path, 'installer', 'meeblip-controller.iss'
+        )
+
+        _run(
+            'iscc "{installer_path}"'
+                .format(installer_path=installer_path)
+        )
 
 
 def build_all():

@@ -317,9 +317,9 @@ jucer_export_target(
   VST3_SDK_FOLDER
     "sdks/vst"
   ICON_SMALL
-    "installer/resources/meeblip-icon@1x.png"
+    "installer/resources/app-icon@1x.png"
   ICON_LARGE
-    "installer/resources/meeblip-icon@2x.png"
+    "installer/resources/app-icon@2x.png"
 )
 
 jucer_export_target_configuration(
@@ -347,9 +347,9 @@ jucer_export_target(
   VST3_SDK_FOLDER
     "sdks/vst"
   ICON_SMALL
-    "installer/resources/meeblip-icon@1x.png"
+    "installer/resources/app-icon@1x.png"
   ICON_LARGE
-    "installer/resources/meeblip-icon@2x.png"
+    "installer/resources/app-icon@2x.png"
 )
 
 jucer_export_target_configuration(
