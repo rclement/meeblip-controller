@@ -36,13 +36,13 @@ Name: "full";   Description: "Full installation"
 Name: "custom"; Description: "Custom installation"; Flags: iscustom
 
 [Components]
-Name: "{#AppNameUnderscore}";               Description: "{#AppName}";          Flags: fixed;
-Name: "{#AppNameUnderscore}/standalone_32"; Description: "Standalone (32-bit)"; Types: full;
-Name: "{#AppNameUnderscore}/standalone_64"; Description: "Standalone (64-bit)"; Types: full; Check: IsWin64;
-Name: "{#AppNameUnderscore}/vst2_32";       Description: "VST2 (32-bit)";       Types: full;
-Name: "{#AppNameUnderscore}/vst2_64";       Description: "VST2 (64-bit)";       Types: full; Check: IsWin64;
-Name: "{#AppNameUnderscore}/vst3_32";       Description: "VST3 (32-bit)";       Types: full;
-Name: "{#AppNameUnderscore}/vst3_64";       Description: "VST3 (64-bit)";       Types: full; Check: IsWin64;
+Name: "{#AppNameUnderscore}";               Description: "{#AppName}";          Types: full custom; Flags: fixed checkablealone;
+Name: "{#AppNameUnderscore}/standalone_32"; Description: "Standalone (32-bit)"; Types: full custom;
+Name: "{#AppNameUnderscore}/standalone_64"; Description: "Standalone (64-bit)"; Types: full custom; Check: IsWin64;
+Name: "{#AppNameUnderscore}/vst2_32";       Description: "VST2 (32-bit)";       Types: full custom;
+Name: "{#AppNameUnderscore}/vst2_64";       Description: "VST2 (64-bit)";       Types: full custom; Check: IsWin64;
+Name: "{#AppNameUnderscore}/vst3_32";       Description: "VST3 (32-bit)";       Types: full custom;
+Name: "{#AppNameUnderscore}/vst3_64";       Description: "VST3 (64-bit)";       Types: full custom; Check: IsWin64;
 
 [Files]
 Source: "{#AppBuildDir}\Win32\Release\Standalone Plugin\{#AppName}.exe";  DestDir: "{pf32}\{#AppPublisher}\{#AppName}"; DestName: "{#AppName}.exe"; Components: {#AppNameUnderscore}/standalone_32; Flags: ignoreversion overwritereadonly uninsremovereadonly;
