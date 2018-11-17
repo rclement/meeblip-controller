@@ -42,7 +42,7 @@ def build_frut():
     root_path = os.getcwd()
     os.chdir(frut_path)
 
-    build_path = os.path.abspath('build')
+    build_path = os.path.abspath(os.path.join(frut_path, 'build'))
     if not os.path.exists(build_path):
         os.makedirs(build_path)
 
@@ -132,6 +132,7 @@ def build_plugin():
 
 
 def validate_plugins():
+    build_path = os.path.abspath(build_dir)
     pluginval_bin_path = None
     plugin_paths = []
 
@@ -143,9 +144,9 @@ def validate_plugins():
 
         for c in build_configs:
             plugin_paths += [
-                os.path.join(build_dir, c, 'Meeblip Controller.component'),
-                os.path.join(build_dir, c, 'Meeblip Controller.vst'),
-                os.path.join(build_dir, c, 'Meeblip Controller.vst3'),
+                os.path.join(build_path, c, 'Meeblip Controller.component'),
+                os.path.join(build_path, c, 'Meeblip Controller.vst'),
+                os.path.join(build_path, c, 'Meeblip Controller.vst3'),
             ]
     elif platform_name == 'Windows':
         pluginval_bin_path = os.path.join(
@@ -156,12 +157,12 @@ def validate_plugins():
         for c in build_configs:
             for a in build_archs_win:
                 plugin_paths += [
-                    os.path.join(build_dir, a, c, 'VST', 'Meeblip Controller.dll'),
-                    os.path.join(build_dir, a, c, 'VST3', 'Meeblip Controller.vst3'),
+                    os.path.join(build_path, a, c, 'VST', 'Meeblip Controller.dll'),
+                    os.path.join(build_path, a, c, 'VST3', 'Meeblip Controller.vst3'),
                 ]
 
     for p in plugin_paths:
-        _run(pluginval_bin_path + ' --strictness-level 5 --validate ' + p)
+        _run(pluginval_bin_path + ' --strictness-level 5 --validate "' + p + '"')
 
 
 def build_installer():
