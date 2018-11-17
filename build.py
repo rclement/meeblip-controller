@@ -155,11 +155,11 @@ def validate_plugins():
         )
 
         for c in build_configs:
-            for a in build_archs_win:
-                plugin_paths += [
-                    os.path.join(build_path, a, c, 'VST', 'Meeblip Controller.dll'),
-                    os.path.join(build_path, a, c, 'VST3', 'Meeblip Controller.vst3'),
-                ]
+            arch_x64 = build_archs_win[1]
+            plugin_paths += [
+                os.path.join(build_path, arch_x64, c, 'VST', 'Meeblip Controller.dll'),
+                os.path.join(build_path, arch_x64, c, 'VST3', 'Meeblip Controller.vst3'),
+            ]
 
     for p in plugin_paths:
         _run(pluginval_bin_path + ' --strictness-level 5 --validate "' + p + '"')
