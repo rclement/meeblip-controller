@@ -14,6 +14,7 @@ AppPublisherURL         = {#AppUrl}
 AppSupportURL           = {#AppUrl}
 AppUpdatesURL           = {#AppUrl}
 AppCopyright            = Copyright (C) 2018 {#AppPublisher}
+LicenseFile             = {#AppRootDir}\LICENSE.txt
 DefaultDirName          = {commonappdata}\{#AppPublisher}\{#AppName}
 DisableDirPage          = yes
 DefaultGroupName        = {#AppPublisher}
@@ -36,13 +37,15 @@ Name: "full";   Description: "Full installation"
 Name: "custom"; Description: "Custom installation"; Flags: iscustom
 
 [Components]
-Name: "{#AppNameUnderscore}";               Description: "{#AppName}";          Types: full custom; Flags: fixed checkablealone;
-Name: "{#AppNameUnderscore}/standalone_32"; Description: "Standalone (32-bit)"; Types: full custom;
-Name: "{#AppNameUnderscore}/standalone_64"; Description: "Standalone (64-bit)"; Types: full custom; Check: IsWin64;
-Name: "{#AppNameUnderscore}/vst2_32";       Description: "VST2 (32-bit)";       Types: full custom;
-Name: "{#AppNameUnderscore}/vst2_64";       Description: "VST2 (64-bit)";       Types: full custom; Check: IsWin64;
-Name: "{#AppNameUnderscore}/vst3_32";       Description: "VST3 (32-bit)";       Types: full custom;
-Name: "{#AppNameUnderscore}/vst3_64";       Description: "VST3 (64-bit)";       Types: full custom; Check: IsWin64;
+Name: "{#AppNameUnderscore}";                           Description: "{#AppName}";                          Types: full custom;
+Name: "{#AppNameUnderscore}/standalone_32";             Description: "Standalone (32-bit)";                 Types: full custom;
+Name: "{#AppNameUnderscore}/standalone_64";             Description: "Standalone (64-bit)";                 Types: full custom; Check: IsWin64;
+Name: "{#AppNameUnderscore}/vst2_32";                   Description: "VST2 (32-bit)";                       Types: full custom;
+Name: "{#AppNameUnderscore}/vst2_64";                   Description: "VST2 (64-bit)";                       Types: full custom; Check: IsWin64;
+Name: "{#AppNameUnderscore}/vst3_32";                   Description: "VST3 (32-bit)";                       Types: full custom;
+Name: "{#AppNameUnderscore}/vst3_64";                   Description: "VST3 (64-bit)";                       Types: full custom; Check: IsWin64;
+Name: "{#AppNameUnderscore}_required";                  Description: "{#AppName} - Required Components";    Types: full custom; Flags: fixed;
+Name: "{#AppNameUnderscore}_required/factorypresets";   Description: "Factory Presets";                     Types: full custom; Flags: fixed;
 
 [Files]
 Source: "{#AppBuildDir}\Win32\Release\Standalone Plugin\{#AppName}.exe";  DestDir: "{pf32}\{#AppPublisher}\{#AppName}"; DestName: "{#AppName}.exe"; Components: {#AppNameUnderscore}/standalone_32; Flags: ignoreversion overwritereadonly uninsremovereadonly;
@@ -54,5 +57,5 @@ Source: "{#AppBuildDir}\x64\Release\VST\{#AppName}.dll";      DestDir: "{pf64}\S
 Source: "{#AppBuildDir}\Win32\Release\VST3\{#AppName}.vst3";   DestDir: "{cf32}\VST3"; DestName: "{#AppName}.vst3"; Components: {#AppNameUnderscore}/vst3_32; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 Source: "{#AppBuildDir}\x64\Release\VST3\{#AppName}.vst3";     DestDir: "{cf64}\VST3"; DestName: "{#AppName}.vst3"; Components: {#AppNameUnderscore}/vst3_64; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 
-; Source: "{#AppRootDir}\installer\resources\presets\*"; DestDir: "{app}\presets"; Components: {#AppNameUnderscore}; Flags: ignoreversion createallsubdirs recursesubdirs overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\installer\presets\*"; DestDir: "{app}\presets"; Components: {#AppNameUnderscore}_required/factorypresets; Flags: ignoreversion createallsubdirs recursesubdirs overwritereadonly uninsremovereadonly skipifsourcedoesntexist;
 
