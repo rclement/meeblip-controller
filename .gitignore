@@ -33,6 +33,7 @@
 
 # Build
 build/
+__pycache__/
 
 # OS generated files
 .DS_Store
@@ -43,3 +44,6 @@ build/
 ehthumbs.db
 Thumbs.db
 *.orig
+
+# Editors
+*.swp

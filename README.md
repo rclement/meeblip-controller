@@ -19,9 +19,9 @@ Built using the [JUCE](https://juce.com) framework.
 Currently supported features:
 
 - Platforms: MacOS, Windows
-- Plug-in format: VST2, VST3, AudioUnit
-- Access to "hidden" (MIDI only) parameters
-- Synth parameters exported at host level for real-time and offline automations
+- Plug-in formats: VST2, VST3, AudioUnit
+- Access to "hidden" (MIDI only) parameters of the synthesizer
+- Synthesizer parameters exported at host level for real-time and offline automations
 - Full-blown preset system
 
 
@@ -40,7 +40,7 @@ Currently supported features:
 ## Automated
 
 ```
-    python build.py
+    python ci/all.py
 ```
 
 ## Manual

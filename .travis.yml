@@ -15,5 +15,5 @@ matrix:
 script:
   - cmake --version
   - python3 --version
-  - python3 build.py
+  - python3 ci/all.py
 
