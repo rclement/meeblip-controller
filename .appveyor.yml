@@ -13,3 +13,16 @@ install:
 build_script:
   - 'python ci/all.py'
 
+deploy:
+  provider: GitHub
+  auth_token:
+    secure: +MJsWuNJzKj+2s702OurcBXR0INATgPi411DKBGFNhQNiq41KCceKio+oo0b32g0
+  release: '$(appveyor_repo_commit)'
+  description: 'Test release'
+  artifact: build/installer/output/*.exe
+  draft: true
+  prerelease: false
+  on:
+    branch: develop
+    appveyor_repo_tag: false
+
