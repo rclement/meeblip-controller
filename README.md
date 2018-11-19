@@ -1,9 +1,11 @@
-# Meeblip Controller
+<p align="center">
+  <img src="ext/meeblip-controller-banner.png" height="150" title="Meeblip Controller Banner">
+</p>
+
+> Take full control over your Meeblip Anode!
 
 [![Build Status Travis-CI](https://travis-ci.org/rclement/meeblip-controller.svg)](https://travis-ci.org/rclement/meeblip-controller)
 [![Build status AppVeyor](https://ci.appveyor.com/api/projects/status/ub29w4jlrih593ox?svg=true)](https://ci.appveyor.com/project/rclement/meeblip-controller)
-
-> Take full control over your Meeblip Anode!
 
 MIDI controller for the [Meeblip Anode](https://meeblip.com/products/meeblip-anode-synth) synthesizer,
 available on MacOS and Windows as an audio plug-in (VST, VST3, AU) and a standalone app.
@@ -14,7 +16,7 @@ Inspired by [Meeblip Web Editor](https://editor.meeblip.com) and
 Built using the [JUCE](https://juce.com) framework.
 
 <p align="center">
-  <img src="ext/meeblip-controller-screenshot.png" width="512" title="Github Logo">
+  <img src="ext/meeblip-controller-screenshot.png" height="650" title="Meeblip Controller Screenshot">
 </p>
 
 
