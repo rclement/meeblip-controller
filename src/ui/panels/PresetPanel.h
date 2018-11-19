@@ -42,9 +42,8 @@ public: // juce::Component
     void paint (juce::Graphics&) override;
 
 private:
-    juce::Label mTitle;
-    juce::Label mSubtitle;
-    PresetBar   mPresetBar;
+    juce::DrawableButton    mLogo;
+    PresetBar               mPresetBar;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PresetPanel)
 };

@@ -43,12 +43,6 @@ SettingsPanel::SettingsPanel (controller::MidiController& midiController)
     );
     addAndMakeVisible (mUseExternalMidi);
 
-    mMidiDeviceLabel.setText (
-        "Device",
-        juce::NotificationType::dontSendNotification
-    );
-    addAndMakeVisible (mMidiDeviceLabel);
-
     mMidiDeviceSelector.onChange = [this]
     {
         mMidiController.selectMidiOutputDevice (
@@ -125,13 +119,11 @@ void SettingsPanel::resized()
     static const auto sMidiChannelSelectorWidth = 60;
 
     const auto bounds                   = getLocalBounds();
-    const auto midiDeviceLabelWidth     = mMidiDeviceLabel.getFont().getStringWidth (mMidiDeviceLabel.getText());
     const auto midiChannelLabelWidth    = mMidiChannelLabel.getFont().getStringWidth (mMidiChannelLabel.getText());
     const auto midiDeviceSelectorWidth  = (
         bounds.getWidth()
-        - sHorizontalMargin * 7
+        - sHorizontalMargin * 6
         - sUseMidiExternalWidth
-        - midiDeviceLabelWidth
         - sHeight
         - midiChannelLabelWidth
         - sMidiChannelSelectorWidth
@@ -144,16 +136,9 @@ void SettingsPanel::resized()
         sHeight
     );
 
-    mMidiDeviceLabel.setBounds (
+    mMidiDeviceSelector.setBounds (
         mUseExternalMidi.getRight() + sHorizontalMargin,
         mUseExternalMidi.getY(),
-        midiDeviceLabelWidth,
-        sHeight
-    );
-
-    mMidiDeviceSelector.setBounds (
-        mMidiDeviceLabel.getRight() + sHorizontalMargin,
-        mMidiDeviceLabel.getY(),
         midiDeviceSelectorWidth,
         sHeight
     );
@@ -201,7 +186,6 @@ void SettingsPanel::updateUseExternalMidi()
     const auto toggled = mUseExternalMidi.getToggleState();
 
     mMidiController.setUseExternalMidi (toggled);
-    mMidiDeviceLabel.setEnabled (toggled);
     mMidiDeviceSelector.setEnabled (toggled);
     mMidiDeviceRefresh.setEnabled (toggled);
     mMidiChannelLabel.setEnabled (toggled);

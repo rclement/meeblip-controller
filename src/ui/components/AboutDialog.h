@@ -20,7 +20,6 @@
 
 #pragma once
 
-#include <controller/MidiController.h>
 #include <JuceHeader.h>
 
 //==============================================================================
@@ -30,32 +29,26 @@ namespace ui {
 
 //==============================================================================
 
-class SettingsPanel : public juce::Component
+class AboutDialog : public juce::Component
 {
 public:
-    SettingsPanel (controller::MidiController&);
-    ~SettingsPanel();
+    AboutDialog();
+    ~AboutDialog();
 
 public: // juce::Component
-    void resized() override;
-    void paint (juce::Graphics&) override;
+    void resized();
+    void paint (juce::Graphics&);
 
 private:
-    void updateUseExternalMidi();
-    void updateMidiDevices();
+    juce::Label             mPluginName;
+    juce::Label             mPluginVersion;
+    juce::Label             mPluginDescription;
+    juce::Label 	        mPluginCredits;
+    juce::Label             mPluginCopyright;
+    juce::Label             mPluginLicense;
+    juce::HyperlinkButton   mPluginWebsite;
 
-private:
-    controller::MidiController&     mMidiController;
-
-    juce::TextButton                mUseExternalMidi;
-
-    juce::ComboBox                  mMidiDeviceSelector;
-    juce::DrawableButton            mMidiDeviceRefresh;
-
-    juce::Label                     mMidiChannelLabel;
-    juce::ComboBox                  mMidiChannelSelector;
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SettingsPanel)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AboutDialog)
 };
 
 //==============================================================================

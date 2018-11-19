@@ -58,6 +58,6 @@ private:
 
 //==============================================================================
 
-} // namespace mbctrl
 } // namespace ui
+} // namespace mbctrl
 

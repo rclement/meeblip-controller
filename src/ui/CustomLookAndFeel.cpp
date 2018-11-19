@@ -29,7 +29,7 @@ namespace ui {
 
 static const juce::LookAndFeel_V4::ColourScheme sAnodeColourScheme =
 {
-    0xff111111, 0xff333333, 0xff333333,
+    0xff222222, 0xff333333, 0xff333333,
     0xffffffff, 0xffffffff, 0x00000000,
     0xffffffff, 0xffe85727, 0xffffffff
 };

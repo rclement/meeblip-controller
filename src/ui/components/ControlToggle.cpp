@@ -80,6 +80,5 @@ void ControlToggle::resized()
 
 //==============================================================================
 
-} // namespace mbctrl
 } // namespace ui
-
+} // namespace mbctrl

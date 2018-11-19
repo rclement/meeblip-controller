@@ -91,5 +91,5 @@ void ControlKnob::resized()
 
 //==============================================================================
 
-} // namespace mbctrl
 } // namespace ui
+} // namespace mbctrl

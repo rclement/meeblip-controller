@@ -19,6 +19,7 @@
 //==============================================================================
 
 #include <ui/panels/PresetPanel.h>
+#include <ui/components/AboutDialog.h>
 #include <ui/CustomLookAndFeel.h>
 #include <map>
 
@@ -30,26 +31,38 @@ namespace ui {
 //==============================================================================
 
 PresetPanel::PresetPanel (grape::presets::PresetManager& presetManager)
-    : mPresetBar (presetManager)
+    : mLogo ("logo", juce::DrawableButton::ButtonStyle::ImageStretched)
+    , mPresetBar (presetManager)
 {
-    const auto& montserratExtraLightTf = CustomLookAndFeel::sTypefaces.at (
-        CustomLookAndFeel::TypefaceId::typefaceMontserratExtraLight
-    );
+    {
+        int mbctrlLogoPngSize = 0;
+        const auto mbctrlLogoPng = AssetsData::getNamedResource (
+            "mbctrllogowhite_png",
+            mbctrlLogoPngSize
+        );
 
-    const auto& montserratRegularTf = CustomLookAndFeel::sTypefaces.at (
-        CustomLookAndFeel::TypefaceId::typefaceMontserratRegular
-    );
+        std::unique_ptr<juce::Drawable> mbctrlLogoImage (
+            juce::Drawable::createFromImageData (
+                mbctrlLogoPng,
+                mbctrlLogoPngSize
+            )
+        );
 
-    mTitle.setText (JucePlugin_Name, juce::NotificationType::dontSendNotification);
-    mTitle.setFont (juce::Font (montserratRegularTf.mPtr).withHeight (14));
-    addAndMakeVisible (mTitle);
-
-    mSubtitle.setText (
-        juce::String ("Version ") + JucePlugin_VersionString,
-        juce::NotificationType::dontSendNotification
-    );
-    mSubtitle.setFont (juce::Font (montserratExtraLightTf.mPtr).withHeight (9));
-    addAndMakeVisible (mSubtitle);
+        mLogo.setImages (mbctrlLogoImage.get());
+    }
+    mLogo.onClick = [this]
+    {
+        juce::DialogWindow::LaunchOptions options;
+        options.dialogTitle = "About";
+        options.escapeKeyTriggersCloseButton = true;
+        options.resizable = false;
+        options.useBottomRightCornerResizer = false;
+        options.componentToCentreAround = getTopLevelComponent();
+        options.content.set (new AboutDialog (), true);
+        options.content->setSize(400, 200);
+        options.launchAsync();
+    };
+    addAndMakeVisible (mLogo);
 
     addAndMakeVisible (mPresetBar);
 }
@@ -65,31 +78,23 @@ void PresetPanel::resized()
 {
     static const auto sVerticalMargin   = 10;
     static const auto sHorizontalMargin = 20;
-    static const auto sTitleSize        = juce::Rectangle<int> (150, 20);
-    static const auto sSubtitleSize     = juce::Rectangle<int> (60, 14);
 
-    const auto bounds        = getLocalBounds();
-    const auto presetBarSize = juce::Rectangle<int> (
-        bounds.getWidth() - sTitleSize.getWidth() - sHorizontalMargin * 2,
+    const auto bounds           = getLocalBounds();
+    const auto logoSize         = juce::Rectangle<int> (bounds.getHeight(), bounds.getHeight());
+    const auto presetBarSize    = juce::Rectangle<int> (
+        bounds.getWidth() - logoSize.getWidth() - sHorizontalMargin * 3,
         20
     );
 
-    mTitle.setBounds (
+    mLogo.setBounds (
         sHorizontalMargin,
-        sVerticalMargin,
-        sTitleSize.getWidth(),
-        sTitleSize.getHeight()
-    );
-
-    mSubtitle.setBounds (
-        mTitle.getX(),
-        mTitle.getBottom() - 5,
-        sSubtitleSize.getWidth(),
-        sSubtitleSize.getHeight()
+        0,
+        logoSize.getWidth(),
+        logoSize.getHeight()
     );
 
     mPresetBar.setBounds (
-        bounds.getRight() - presetBarSize.getWidth() - sHorizontalMargin,
+        mLogo.getRight() + sHorizontalMargin,
         sVerticalMargin + 5,
         presetBarSize.getWidth(),
         presetBarSize.getHeight()

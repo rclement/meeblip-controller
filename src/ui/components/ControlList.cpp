@@ -101,6 +101,5 @@ void ControlList::resized()
 
 //==============================================================================
 
-} // namespace mbctrl
 } // namespace ui
-
+} // namespace mbctrl

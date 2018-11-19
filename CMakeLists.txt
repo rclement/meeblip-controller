@@ -4,7 +4,7 @@ set(APP_NAME                "Meeblip Controller")
 set(APP_DESCRIPTION         "MIDI controller for the Meeblip Anode synthesizer")
 set(APP_VERSION             "0.1.0")
 set(APP_MANUFACTURER_NAME   "Romain Clement")
-set(APP_MANUFACTURER_URL    "www.romain-clement.net")
+set(APP_MANUFACTURER_URL    "https://github.com/rclement/meeblip-controller")
 set(APP_MANUFACTURER_EMAIL  "contact@romain-clement.net")
 set(APP_BUNDLE_ID           "net.romainclement.meeblipcontroller")
 set(APP_ROOT_DIR            "${CMAKE_CURRENT_LIST_DIR}")
@@ -143,6 +143,7 @@ jucer_project_files("MeeblipController/assets/png"
 # Compile   Xcode     Binary
 #           Resource  Resource
   .         .         x         "src/assets/png/anode-logo-white.png"
+  .         .         x         "src/assets/png/mbctrl-logo-white.png"
   .         .         x         "src/assets/png/meeblip-logo-white.png"
 )
 
@@ -180,6 +181,8 @@ jucer_project_files("MeeblipController/ui"
 jucer_project_files("MeeblipController/ui/components"
 # Compile   Xcode     Binary
 #           Resource  Resource
+  x         .         .         "src/ui/components/AboutDialog.cpp"
+  .         .         .         "src/ui/components/AboutDialog.h"
   x         .         .         "src/ui/components/ControlKnob.cpp"
   .         .         .         "src/ui/components/ControlKnob.h"
   x         .         .         "src/ui/components/ControlList.cpp"
