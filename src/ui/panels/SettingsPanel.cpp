@@ -203,6 +203,7 @@ void SettingsPanel::updateUseExternalMidi()
     mMidiController.setUseExternalMidi (toggled);
     mMidiDeviceLabel.setEnabled (toggled);
     mMidiDeviceSelector.setEnabled (toggled);
+    mMidiDeviceRefresh.setEnabled (toggled);
     mMidiChannelLabel.setEnabled (toggled);
     mMidiChannelSelector.setEnabled (toggled);
 }
