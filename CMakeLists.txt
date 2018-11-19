@@ -86,8 +86,10 @@ jucer_audio_plugin_settings(
   PLUGIN_AAX_IDENTIFIER "${APP_BUNDLE_ID}"
   PLUGIN_AU_EXPORT_PREFIX "MeeblipControllerAU"
 
-  PLUGIN_AU_MAIN_TYPE "kAudioUnitType_Effect"
-  PLUGIN_VST_CATEGORY "kPlugCategUnknown"
+  PLUGIN_AU_MAIN_TYPE
+    "kAudioUnitType_Effect"
+  PLUGIN_VST_CATEGORY
+    "kPlugCategUnknown"
   PLUGIN_VST3_CATEGORY
     "External"
   PLUGIN_RTAS_CATEGORY

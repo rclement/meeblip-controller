@@ -40,7 +40,9 @@ PluginProcessor::PluginProcessor()
     , mParameters (*this, &mUndoManager, common::sOrderedParameters)
     , mPresetManager (mParameters)
     , mSettingManager (common::sOrderedSettings, &mUndoManager)
-    , mMidiController (mParameters, mSettingManager, wrapperType == WrapperType::wrapperType_Standalone)
+    , mMidiController (mParameters,
+                       mSettingManager,
+                       wrapperType == WrapperType::wrapperType_Standalone)
 {
 
 }
