@@ -28,6 +28,8 @@ Currently supported features:
 - Plug-in formats: VST2, VST3, AudioUnit
 - Access to "hidden" (MIDI only) parameters of the synthesizer
 - Synthesizer parameters exported at host level for real-time and offline automations
+- One-shot full synchronization
+- Support for MIDI events forwarding to plug-in host (default) or selected external device
 - Full-blown preset system
 
 
