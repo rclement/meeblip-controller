@@ -69,8 +69,10 @@ static juce::MidiMessage createParameterControl (common::ParameterId paramId,
 //==============================================================================
 
 MidiController::MidiController (grape::parameters::ParameterManager& parameters,
-                                grape::settings::SettingManager& settingManager)
-    : mMidiOutputDevices()
+                                grape::settings::SettingManager& settingManager,
+                                bool useMidiDevice)
+    : mUseExternalMidi (useMidiDevice)
+    , mMidiOutputDevices()
     , mMidiOutput (nullptr)
     , mMidiChannel (1)
     , mParameters (parameters)
@@ -86,6 +88,7 @@ MidiController::MidiController (grape::parameters::ParameterManager& parameters,
     }
 
     mSettingManager.addListener (this);
+    setUseExternalMidi (mUseExternalMidi);
 
     updateMidiOutputDevices();
     updateSettingsValues();
@@ -107,6 +110,14 @@ MidiController::~MidiController()
 
 //==============================================================================
 
+void MidiController::setUseExternalMidi (bool useExternalMidi)
+{
+    const auto useExternalMidiSetting = common::sSettings.at (common::SettingId::idUseExternalMidi);
+
+    mUseExternalMidi = useExternalMidi;
+    mSettingManager.setSetting (useExternalMidiSetting.id, juce::var (mUseExternalMidi));
+}
+
 juce::StringArray MidiController::getMidiOutputDevices() const
 {
     return mMidiOutputDevices;
@@ -124,6 +135,9 @@ bool MidiController::selectDefaultMidiOutputDevice()
 
 bool MidiController::selectMidiOutputDevice (int index)
 {
+    if (!mUseExternalMidi)
+        return false;
+
     const auto device = juce::MidiOutput::openDevice (index);
     if (device != nullptr)
     {
@@ -182,25 +196,28 @@ void MidiController::synchronize()
         const auto newValue = *mParameters.getRawParameterValue (param.id);
 
         mParametersValues[paramId] = newValue;
-        sendParameterControl (paramId, newValue);
+        addMidiMessageToBuffer (paramId, newValue);
     }
+
+    sendMidiBuffer();
+}
+
+juce::MidiBuffer MidiController::extractMidiBuffer()
+{
+    const auto midiBuffer (mMidiBuffer);
+    mMidiBuffer.clear();
+
+    return midiBuffer;
 }
 
 //==============================================================================
 
-void MidiController::sendParameterControl (common::ParameterId paramId, float newValue) const
+void MidiController::sendMidiBuffer()
 {
-    if (mMidiOutput == nullptr)
+    if (!mUseExternalMidi || mMidiOutput == nullptr)
         return;
 
-    const auto cc = createParameterControl (paramId, newValue, mMidiChannel);
-    mMidiOutput->sendMessageNow (cc);
-
-    DBG (
-        juce::String ("Sending: cc (") + juce::String (cc.getControllerNumber()) + ")"
-        + " value (" + juce::String (cc.getControllerValue()) + ")"
-        + " channel (" + juce::String (cc.getChannel()) + ")"
-    );
+    mMidiOutput->sendBlockOfMessagesNow (extractMidiBuffer());
 }
 
 void MidiController::updateParametersValues()
@@ -216,13 +233,21 @@ void MidiController::updateParametersValues()
         if (newValue != currentValue)
         {
             mParametersValues[paramId] = newValue;
-            sendParameterControl (paramId, newValue);
+            addMidiMessageToBuffer (paramId, newValue);
         }
     }
+
+    sendMidiBuffer();
 }
 
 void MidiController::updateSettingsValues()
 {
+    {
+        const auto useExternalMidiSetting   = common::sSettings.at (common::SettingId::idUseExternalMidi);
+        const auto useExternalMidi          = mSettingManager.getSetting (useExternalMidiSetting.id);
+        setUseExternalMidi (bool (useExternalMidi));
+    }
+
     {
         const auto midiDeviceSetting    = common::sSettings.at (common::SettingId::idMidiDevice);
         const auto midiDevice           = mSettingManager.getSetting (midiDeviceSetting.id);
@@ -234,6 +259,15 @@ void MidiController::updateSettingsValues()
         const auto midiChannel          = mSettingManager.getSetting (midiChannelSetting.id);
         setMidiChannel (int (midiChannel));
     }
+}
+
+void MidiController::addMidiMessageToBuffer (common::ParameterId paramId, float newValue)
+{
+    const auto midiMessage = createParameterControl (
+        paramId, newValue, mMidiChannel
+    );
+
+    mMidiBuffer.addEvent (midiMessage, 0);
 }
 
 //==============================================================================

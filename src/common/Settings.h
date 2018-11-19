@@ -34,6 +34,7 @@ namespace common {
 
 enum class SettingId
 {
+    idUseExternalMidi,
     idMidiDevice,
     idMidiChannel,
     numSettingIds,

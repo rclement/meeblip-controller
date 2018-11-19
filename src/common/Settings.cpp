@@ -31,6 +31,16 @@ namespace common {
 const std::map<SettingId, grape::settings::Setting> sSettings =
 {
     {
+        SettingId::idUseExternalMidi,
+        {
+            "user-external-midi",
+            "Use External MIDI",
+            false,
+            grape::helpers::varValueToText,
+            grape::helpers::varTextToValue
+        }
+    },
+    {
         SettingId::idMidiDevice,
         {
             "midi-device",

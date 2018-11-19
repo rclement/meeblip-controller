@@ -40,7 +40,7 @@ PluginProcessor::PluginProcessor()
     , mParameters (*this, &mUndoManager, common::sOrderedParameters)
     , mPresetManager (mParameters)
     , mSettingManager (common::sOrderedSettings, &mUndoManager)
-    , mMidiController (mParameters, mSettingManager)
+    , mMidiController (mParameters, mSettingManager, wrapperType == WrapperType::wrapperType_Standalone)
 {
 
 }
@@ -157,7 +157,8 @@ bool PluginProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 }
 #endif
 
-void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
+void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer,
+                                    juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
 
@@ -166,6 +167,24 @@ void PluginProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::Midi
 
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
+
+    {
+        const auto useMidiExternalSetting   = common::sSettings.at (common::SettingId::idUseExternalMidi);
+        const auto useMidiExternal          = bool (mSettingManager.getSetting (useMidiExternalSetting.id));
+
+        if (!useMidiExternal)
+        {
+            const auto midiEvents = mMidiController.extractMidiBuffer();
+            auto midiIterator = juce::MidiBuffer::Iterator (midiEvents);
+
+            juce::MidiMessage midiMessage;
+            int midiSampleNumber;
+            while (midiIterator.getNextEvent (midiMessage, midiSampleNumber))
+            {
+                midiMessages.addEvent (midiMessage, midiSampleNumber);
+            }
+        }
+    }
 }
 
 //==============================================================================

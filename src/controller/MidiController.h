@@ -39,10 +39,13 @@ class MidiController : private juce::AudioProcessorValueTreeState::Listener
 {
 public:
     MidiController (grape::parameters::ParameterManager&,
-                    grape::settings::SettingManager&);
+                    grape::settings::SettingManager&,
+                    bool useMidiDevice);
     ~MidiController();
 
 public:
+    void setUseExternalMidi (bool);
+    inline bool getUseExternalMidi() const { return mUseExternalMidi; }
     juce::StringArray getMidiOutputDevices() const;
     void updateMidiOutputDevices();
     bool selectDefaultMidiOutputDevice();
@@ -52,11 +55,13 @@ public:
     void setMidiChannel (int channel);
     inline int getMidiChannel() const { return mMidiChannel; }
     void synchronize();
+    juce::MidiBuffer extractMidiBuffer();
 
 private:
-    void sendParameterControl (common::ParameterId, float) const;
+    void sendMidiBuffer();
     void updateParametersValues();
     void updateSettingsValues();
+    void addMidiMessageToBuffer (common::ParameterId, float);
 
 private: // juce::AudioProcessorValueTreeState::Listener
     void parameterChanged (const juce::String&, float) override;
@@ -65,9 +70,12 @@ private: // grape::settings::SettingManager::Listener
     void settingChanged (const juce::String&, const juce::var&) override;
 
 private:
+    bool                                    mUseExternalMidi;
+
     juce::StringArray                       mMidiOutputDevices;
     std::unique_ptr<juce::MidiOutput>       mMidiOutput;
     int                                     mMidiChannel;
+    juce::MidiBuffer                        mMidiBuffer;
 
     grape::parameters::ParameterManager&    mParameters;
     common::ParameterMapper                 mParametersValues;

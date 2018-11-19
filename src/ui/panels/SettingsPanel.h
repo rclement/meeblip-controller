@@ -41,10 +41,13 @@ public: // juce::Component
     void paint (juce::Graphics&) override;
 
 private:
+    void updateUseExternalMidi();
     void updateMidiDevices();
 
 private:
     controller::MidiController&     mMidiController;
+
+    juce::TextButton                mUseExternalMidi;
 
     juce::Label                     mMidiDeviceLabel;
     juce::ComboBox                  mMidiDeviceSelector;
