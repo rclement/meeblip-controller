@@ -47,7 +47,7 @@ Name: "{#AppNameUnderscore}/vst2_64";                   Description: "VST2 (64-b
 Name: "{#AppNameUnderscore}/vst3_32";                   Description: "VST3 (32-bit)";                       Types: full custom;
 Name: "{#AppNameUnderscore}/vst3_64";                   Description: "VST3 (64-bit)";                       Types: full custom; Check: IsWin64;
 Name: "{#AppNameUnderscore}_required";                  Description: "{#AppName} - Required Components";    Types: full custom; Flags: fixed;
-Name: "{#AppNameUnderscore}_required/license";          Description: "License";                             Types: full custom; Flags: fixed;
+Name: "{#AppNameUnderscore}_required/licenses";         Description: "Licenses";                            Types: full custom; Flags: fixed;
 Name: "{#AppNameUnderscore}_required/factorypresets";   Description: "Factory Presets";                     Types: full custom; Flags: fixed;
 
 [Files]
@@ -60,23 +60,23 @@ Source: "{#AppBuildDir}\x64\Release\VST\{#AppName}.dll";      DestDir: "{pf64}\S
 Source: "{#AppBuildDir}\Win32\Release\VST3\{#AppName}.vst3";   DestDir: "{cf32}\VST3"; DestName: "{#AppName}.vst3"; Components: {#AppNameUnderscore}/vst3_32; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 Source: "{#AppBuildDir}\x64\Release\VST3\{#AppName}.vst3";     DestDir: "{cf64}\VST3"; DestName: "{#AppName}.vst3"; Components: {#AppNameUnderscore}/vst3_64; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 
-Source: "{#AppRootDir}\LICENSE.txt";                DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses";              DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/license; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "{#AppRootDir}\LICENSE.txt";                DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses";              DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/license; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\LICENSE.txt";                DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses";              DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\LICENSE.txt";                DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses";              DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 
-Source: "{#AppRootDir}\sdks\frut\LICENSE";          DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses\frut";         DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/license; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "{#AppRootDir}\sdks\frut\LICENSE";          DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses\frut";         DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/license; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\sdks\frut\LICENSE";          DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses\frut";         DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\sdks\frut\LICENSE";          DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses\frut";         DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 
-Source: "{#AppRootDir}\sdks\grape\LICENSE";         DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses\grape";        DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/license; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "{#AppRootDir}\sdks\grape\LICENSE";         DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses\grape";        DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/license; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\sdks\grape\LICENSE";         DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses\grape";        DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\sdks\grape\LICENSE";         DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses\grape";        DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 
-Source: "{#AppRootDir}\sdks\juce\LICENSE.md";       DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses\juce";         DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/license; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "{#AppRootDir}\sdks\juce\LICENSE.md";       DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses\juce";         DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/license; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\sdks\juce\LICENSE.md";       DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses\juce";         DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\sdks\juce\LICENSE.md";       DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses\juce";         DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 
-Source: "{#AppRootDir}\sdks\pluginval\LICENSE";     DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses\pluginval";    DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/license; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "{#AppRootDir}\sdks\pluginval\LICENSE";     DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses\pluginval";    DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/license; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\sdks\pluginval\LICENSE";     DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses\pluginval";    DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\sdks\pluginval\LICENSE";     DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses\pluginval";    DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 
-Source: "{#AppRootDir}\sdks\vst\LICENSE.txt";       DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses\vst";          DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/license; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "{#AppRootDir}\sdks\vst\LICENSE.txt";       DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses\vst";          DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/license; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\sdks\vst\LICENSE.txt";       DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses\vst";          DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\sdks\vst\LICENSE.txt";       DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses\vst";          DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 
 Source: "{#AppRootDir}\installer\presets\*"; DestDir: "{app}\presets"; Components: {#AppNameUnderscore}_required/factorypresets; Flags: ignoreversion createallsubdirs recursesubdirs overwritereadonly uninsremovereadonly skipifsourcedoesntexist;
 
