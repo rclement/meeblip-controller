@@ -26,6 +26,6 @@ deploy:
   draft: true
   prerelease: false
   on:
-    branch: develop
-    appveyor_repo_tag: false
+    branch: master
+    appveyor_repo_tag: true
 

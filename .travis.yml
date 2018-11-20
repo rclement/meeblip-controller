@@ -28,6 +28,6 @@ deploy:
   draft: true
   prerelease: false
   on:
-    branch: develop
-    tags: false
+    branch: master
+    tags: true
 
