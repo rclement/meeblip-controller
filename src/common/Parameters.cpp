@@ -298,7 +298,7 @@ const std::map<ParameterId, grape::parameters::Parameter> sParameters =
             "LFO Note Retrigger",
             "",
             juce::NormalisableRange<float> (0.0f, sNumSwitches - 1.0f, 1.0f),
-            1.0f,
+            0.0f,
             grape::helpers::choiceIndexToLabel<sNumSwitches, sSwitchLabels>,
             grape::helpers::choiceLabelToIndex<sNumSwitches, sSwitchLabels>,
             false,
