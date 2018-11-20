@@ -2,18 +2,13 @@
   <img src="ext/meeblip-controller-banner.png" height="150" title="Meeblip Controller Banner">
 </p>
 
-> Take full control over your Meeblip Anode!
-
 [![Build Status Travis-CI](https://travis-ci.org/rclement/meeblip-controller.svg)](https://travis-ci.org/rclement/meeblip-controller)
 [![Build status AppVeyor](https://ci.appveyor.com/api/projects/status/ub29w4jlrih593ox?svg=true)](https://ci.appveyor.com/project/rclement/meeblip-controller)
 
-MIDI controller for the [Meeblip Anode](https://meeblip.com/products/meeblip-anode-synth) synthesizer,
+> Take full control over your Meeblip Anode!
+
+`Meeblip Controller` is a real-time MIDI controller for the [Meeblip Anode](https://meeblip.com/products/meeblip-anode-synth) synthesizer,
 available on MacOS and Windows as an audio plug-in (VST, VST3, AU) and a standalone app.
-
-Inspired by [Meeblip Web Editor](https://editor.meeblip.com) and
-[MyBlip Anode](http://www.dr-midik.fr/site/index.php?post/ticket_MyBlip-anode_2014-04-28).
-
-Built using the [JUCE](https://juce.com) framework.
 
 <p align="center">
   <img src="ext/meeblip-controller-screenshot.png" height="650" title="Meeblip Controller Screenshot">
@@ -26,11 +21,13 @@ Currently supported features:
 
 - Platforms: MacOS, Windows
 - Plug-in formats: VST2, VST3, AudioUnit
+- Standalone application
+- Real-time parameters interaction
 - Access to "hidden" (MIDI only) parameters of the synthesizer
 - Synthesizer parameters exported at host level for real-time and offline automations
-- One-shot full synchronization
+- One-shot full synchronization with hardware
 - Support for MIDI events forwarding to plug-in host (default) or selected external device
-- Full-blown preset system
+- Complete preset system
 
 
 # Build
@@ -82,6 +79,22 @@ Currently supported features:
 
 - MacOS: `packagesbuild -v installer/meeblip-controller.pkgproj`
 - Windows: `iscc "installer\meeblip-controller.iss"`
+
+
+# Acknowledgments
+
+This software makes use of the following third-party dependencies:
+
+- [FRUT](https://github.com/McMartin/FRUT) licensed under GPLv3
+- [GRAPE](https://github.com/rclement/grape) licensed under MIT
+- [JUCE](https://github.com/WeAreROLI/JUCE) licensed under GPLv3
+- [pluginval](https://github.com/Tracktion/pluginval) licensed under GPLv3
+- [vst3sdk](https://github.com/steinbergmedia/vst3sdk) licensed under GPLv3
+
+This project was inspired by:
+
+- [Meeblip Web Editor](https://editor.meeblip.com)
+- [MyBlip Anode](http://www.dr-midik.fr/site/index.php?post/ticket_MyBlip-anode_2014-04-28)
 
 
 # License
