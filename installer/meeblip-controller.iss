@@ -5,6 +5,8 @@
 #define AppUrl              "${APP_MANUFACTURER_URL}"
 #define AppRootDir          "${APP_ROOT_DIR}"
 #define AppBuildDir         "${APP_BUILD_DIR}"
+#define AppOutputDir        "${APP_OUTPUT_DIR}"
+#define AppOutputBaseName   "${APP_OUTPUT_BASENAME}"
 
 [Setup]
 AppName                 = {#AppName}
@@ -19,8 +21,8 @@ DefaultDirName          = {commonappdata}\{#AppPublisher}\{#AppName}
 DisableDirPage          = yes
 DefaultGroupName        = {#AppPublisher}
 DisableProgramGroupPage = no
-OutputDir               = {#AppBuildDir}\installer\output
-OutputBaseFilename      = {#AppName} - {#AppVersion}
+OutputDir               = {#AppOutputDir}
+OutputBaseFilename      = {#AppOutputBaseName}
 Compression             = lzma
 SolidCompression        = yes
 Uninstallable           = yes

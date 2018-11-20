@@ -3,7 +3,7 @@ import sys
 
 from common import (
     platform_name, supported_platforms, juce_path, frut_path, pluginval_path,
-    build_dir, build_configs, build_archs_win, run_cmd
+    build_dir, build_configs, build_archs_win, app_metadata, run_cmd
 )
 
 

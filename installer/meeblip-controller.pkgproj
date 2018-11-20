@@ -3541,7 +3541,7 @@
 			<key>BUILD_PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>${APP_BUILD_DIR}/installer/output</string>
+				<string>${APP_OUTPUT_DIR}</string>
 				<key>PATH_TYPE</key>
 				<integer>0</integer>
 			</dict>
@@ -3714,7 +3714,7 @@
 				</dict>
 			</array>
 			<key>NAME</key>
-			<string>${APP_NAME} - ${APP_VERSION}</string>
+			<string>${APP_OUTPUT_BASENAME}</string>
 			<key>PAYLOAD_ONLY</key>
 			<false/>
 			<key>TREAT_MISSING_PRESENTATION_DOCUMENTS_AS_WARNING</key>

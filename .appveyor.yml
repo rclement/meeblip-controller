@@ -14,14 +14,13 @@ build_script:
   - 'python ci/all.py'
 
 artifacts:
-  - path: 'build\installer\output\*.exe'
+  - path: 'build\installer\output\*.zip'
     name: 'installer'
 
 deploy:
   provider: GitHub
   auth_token:
     secure: +MJsWuNJzKj+2s702OurcBXR0INATgPi411DKBGFNhQNiq41KCceKio+oo0b32g0
-  release: '$(appveyor_repo_commit)'
   description: 'Test release'
   artifact: 'installer'
   draft: true

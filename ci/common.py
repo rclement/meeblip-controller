@@ -14,6 +14,9 @@ build_dir = 'build'
 build_configs = ['Release']
 build_archs_win = ['Win32', 'x64']
 
+app_metadata_file = 'metadata.txt'
+app_metadata = {}
+
 
 def run_cmd(cmd):
     rv = None
@@ -37,4 +40,24 @@ def check_platform():
 
 def init_dependencies():
     run_cmd('git submodule update --init --recursive')
+
+
+def load_app_metadata():
+    filepath = os.path.abspath(app_metadata_file)
+    with open(filepath) as f:
+        for line in f:
+            k, v = line.partition('=')[::2]
+            app_metadata[k.strip()] = v.strip()
+
+    app_metadata['APP_OUTPUT_BASENAME'] = (
+        '{app_name} - {app_version} - {app_os}'
+            .format(
+                app_name=app_metadata['APP_NAME'],
+                app_version=app_metadata['APP_VERSION'],
+                app_os='MacOS' if platform_name == 'Darwin' else 'Windows'
+            )
+    ).replace(' ', '_')
+
+
+load_app_metadata()
 

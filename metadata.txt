@@ -1,0 +1,7 @@
+APP_NAME=Meeblip Controller
+APP_DESCRIPTION=MIDI controller for the Meeblip Anode synthesizer
+APP_VERSION=0.1.0
+APP_MANUFACTURER_NAME=Romain Clement
+APP_MANUFACTURER_URL=https://github.com/rclement/meeblip-controller
+APP_MANUFACTURER_EMAIL=contact@romain-clement.net
+APP_BUNDLE_ID=net.romainclement.meeblipcontroller

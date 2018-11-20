@@ -1,19 +1,26 @@
 cmake_minimum_required(VERSION 3.4)
 
-set(APP_NAME                "Meeblip Controller")
-set(APP_DESCRIPTION         "MIDI controller for the Meeblip Anode synthesizer")
-set(APP_VERSION             "0.1.0")
-set(APP_MANUFACTURER_NAME   "Romain Clement")
-set(APP_MANUFACTURER_URL    "https://github.com/rclement/meeblip-controller")
-set(APP_MANUFACTURER_EMAIL  "contact@romain-clement.net")
-set(APP_BUNDLE_ID           "net.romainclement.meeblipcontroller")
-set(APP_ROOT_DIR            "${CMAKE_CURRENT_LIST_DIR}")
+# load app metadata
+file(STRINGS "metadata.txt" AppMetadata)
+foreach(metadata ${AppMetadata})
+  string(REGEX REPLACE "^[ ]+" "" metadata ${metadata})
+  string(REGEX MATCH "^[^=]+" key ${metadata})
+  string(REPLACE "${key}=" "" value ${metadata})
+  set(${key} "${value}")
+endforeach()
+
+# set extra metadata
+set(APP_ROOT_DIR "${CMAKE_CURRENT_LIST_DIR}")
 if(APPLE)
     set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}")
+    string(REPLACE " " "_" APP_OUTPUT_BASENAME "${APP_NAME} - ${APP_VERSION} - MacOS")
 else()
     set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/..")
+    string(REPLACE " " "_" APP_OUTPUT_BASENAME "${APP_NAME} - ${APP_VERSION} - Windows")
 endif()
+set(APP_OUTPUT_DIR "${APP_BUILD_DIR}/installer/output")
 
+# generate template files
 configure_file(
     "${APP_ROOT_DIR}/installer/meeblip-controller.pkgproj"
     "${APP_BUILD_DIR}/installer/meeblip-controller.pkgproj"
