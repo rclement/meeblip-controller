@@ -21,11 +21,11 @@ deploy:
   provider: GitHub
   auth_token:
     secure: +MJsWuNJzKj+2s702OurcBXR0INATgPi411DKBGFNhQNiq41KCceKio+oo0b32g0
+  release: 'Meeblip Controller $(appveyor_repo_tag_name)'
   description: ''
   artifact: 'installer'
   draft: true
   prerelease: false
   on:
-    branch: master
     appveyor_repo_tag: true
 
