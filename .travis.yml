@@ -11,6 +11,10 @@ matrix:
             - python3
           casks:
             - packages
+    - os: linux
+      dist: xenial
+      sudo: required
+      python: 3.7
 
 script:
   - cmake --version

@@ -42,6 +42,13 @@ def _build_installer():
         )
 
         installer_output_name += '.exe'
+    elif platform_name == 'Linux':
+        print(
+            'Installer packaging not implemented for this platform: {platform_name}'
+                .format(platform_name=platform_name)
+        )
+        return
+
 
     with zipfile.ZipFile(installer_output_arcname, 'w') as z:
         z.write(

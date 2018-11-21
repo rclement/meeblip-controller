@@ -4,7 +4,7 @@ import subprocess
 
 
 platform_name = platform.system()
-supported_platforms = ['Darwin', 'Windows']
+supported_platforms = ['Darwin', 'Windows', 'Linux']
 
 juce_path = os.path.abspath('sdks/juce')
 frut_path = os.path.abspath('sdks/frut')

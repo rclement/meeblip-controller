@@ -73,6 +73,24 @@ def _build_plugin():
                 )
 
             os.chdir(root_path_rel)
+    elif platform_name == 'Linux':
+        root_path = os.getcwd()
+
+        if not os.path.exists(build_path):
+            os.makedirs(build_path)
+
+        os.chdir(build_path)
+        root_path_rel = os.path.relpath(root_path)
+
+        run_cmd('cmake {path} -G "Unix Makefiles"'.format(path=root_path_rel))
+
+        for config in build_configs:
+            run_cmd(
+                'cmake --build . --clean-first --config {config}'
+                    .format(config=config)
+            )
+
+        os.chdir(root_path_rel)
 
 
 def run():

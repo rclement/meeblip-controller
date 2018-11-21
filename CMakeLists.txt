@@ -381,4 +381,26 @@ jucer_export_target_configuration(
   DEBUG_MODE OFF
 )
 
+jucer_export_target(
+  "Linux Makefile"
+  VST3_SDK_FOLDER
+    "sdks/vst"
+  ICON_SMALL
+    "installer/resources/app-icon@1x.png"
+  ICON_LARGE
+    "installer/resources/app-icon@2x.png"
+)
+
+jucer_export_target_configuration(
+  "Linux Makefile"
+  NAME "Debug"
+  DEBUG_MODE ON
+)
+
+jucer_export_target_configuration(
+  "Linux Makefile"
+  NAME "Release"
+  DEBUG_MODE OFF
+)
+
 jucer_project_end()

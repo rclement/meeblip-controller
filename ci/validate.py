@@ -18,6 +18,8 @@ def _build_pluginval():
         plugin_build_bin_name = 'mac_build'
     elif platform_name == 'Windows':
         plugin_build_bin_name = 'windows_build.bat'
+    elif platform_name == 'Linux':
+        plugin_build_bin_name = 'linux_build'
 
     pluginval_build_bin_path = os.path.join(
         pluginval_build_path,
@@ -57,6 +59,17 @@ def _validate_plugins():
             plugin_paths += [
                 os.path.join(build_path, arch_x64, c, 'VST', 'Meeblip Controller.dll'),
                 os.path.join(build_path, arch_x64, c, 'VST3', 'Meeblip Controller.vst3'),
+            ]
+    elif platform_name == 'Linux':
+        pluginval_bin_path = os.path.join(
+            pluginval_path,
+            'bin', 'linux', 'pluginval'
+        )
+
+        for c in build_configs:
+            plugin_paths += [
+                os.path.join(build_path, c, 'Meeblip Controller.vst'),
+                os.path.join(build_path, c, 'Meeblip Controller.vst3'),
             ]
 
     for p in plugin_paths:
