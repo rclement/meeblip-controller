@@ -21,7 +21,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: +MJsWuNJzKj+2s702OurcBXR0INATgPi411DKBGFNhQNiq41KCceKio+oo0b32g0
-  description: 'Test release'
+  description: ''
   artifact: 'installer'
   draft: true
   prerelease: false

@@ -21,7 +21,7 @@ deploy:
   provider: releases
   api_key:
     secure: "kfjk90D/6pw+ZpXXHlnGhbYcjMR5iDLUECCEvUCLW9A7aTIkHC16IuaLIurZbRMZr7TnnVjocNJMlIAr71Am+XC1INEUdC9SGOwCMx/Wa5pAhspNgF/PpzDMuNc56xfeQff870ju9i7deUlYFSqthX79BeLpnArNVybEDh61Q0RQNRTtTG4EdbIWsYBybylAaAnoN49ZXJq9d59z9D4YPCM+CEIQXCVclxh4cdk8GOPcaOQb0fvGeVCjOgA5uFaCFZfb6adoVKZ2G9iQIgqgFXsZa1mhvAEIDBIfQjh+UutL5itMipwZOB4NQUUsezPFVL94z9v86X5NLwOgHinZ3SzEz4zUksg4HrimrNvjWMbH9Y177gh1aWtoClYmPEq0bqc+tqMgCT75i5DBGP7bNHgqz98GhQ9VWef8d79Jm3H1OAzaCLidwrIj0W34jN7MFwCCryFqqocAtbdcE1ffW5RwCHwWh/PafQE6scP87hm9vbldz7vX0ddPGGz8fwHMpPE9z1+CjpEUe1FRd3GvmLRgqmTrlLkvAIE6ZSr4vxUN4Iujerbn/oGmknwvN+FarQPe/l7TiUdPQRp3NVna5Kw1dP3rJZ+wHVK0qbpselKSXw0tDcTSlv5wyR7ypWXo7YyBcGkXMLKsRazuH9WWW/7olCSC3Ka/G8WGQ+32mX8="
-  body: 'Test release'
+  body: ''
   file_glob: true
   file: "build/installer/output/*.zip"
   skip_cleanup: true
