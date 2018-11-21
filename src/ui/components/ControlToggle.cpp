@@ -27,10 +27,10 @@ namespace ui {
 
 //==============================================================================
 
-ControlToggle::ControlToggle (grape::parameters::ParameterManager& parameters,
+ControlToggle::ControlToggle (grape::parameters::ParameterManager& parameterManager,
                               common::ParameterId parameterId,
                               const juce::String& label)
-    : mParameters (parameters)
+    : mParameterManager (parameterManager)
     , mParameterId (parameterId)
 {
     const auto param = common::sParameters.at (mParameterId);
@@ -38,7 +38,7 @@ ControlToggle::ControlToggle (grape::parameters::ParameterManager& parameters,
     addAndMakeVisible (mToggle);
 
     mButtonAttachment.reset (
-        new ButtonAttachment (mParameters, param.id, mToggle)
+        new ButtonAttachment (mParameterManager, param.id, mToggle)
     );
 
     mLabel.setFont (juce::Font (10));

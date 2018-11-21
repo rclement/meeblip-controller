@@ -28,25 +28,25 @@ namespace ui {
 
 //==============================================================================
 
-ControlPanelAnode::ControlPanelAnode (grape::parameters::ParameterManager& parameters,
+ControlPanelAnode::ControlPanelAnode (grape::parameters::ParameterManager& parameterManager,
                                       controller::MidiController& midiController)
     : mMidiController (midiController)
-    , mEnvelopeAttack (parameters, common::ParameterId::idEnvelopeAttack, "ATTACK")
-    , mEnvelopeDecay (parameters, common::ParameterId::idEnvelopeDecay, "DECAY")
-    , mEnvelopeSustain (parameters, common::ParameterId::idSustain, "SUSTAIN")
-    , mFilterCutoff (parameters, common::ParameterId::idFilterCutoff, "CUTOFF")
-    , mOscillatorPulseWidth (parameters, common::ParameterId::idPulseWidth, "WIDTH")
-    , mOscillatorDetune (parameters, common::ParameterId::idOscillatorDetune, "DETUNE")
-    , mOscillatorBOctave (parameters, common::ParameterId::idOscillatorBOctave, "OCTAVE")
-    , mPwmSweep (parameters, common::ParameterId::idPWMSweep, "SWEEP")
-    , mLfoRate (parameters, common::ParameterId::idLfoRate, "RATE")
-    , mLfoDepth (parameters, common::ParameterId::idLfoDepth, "DEPTH")
-    , mLfoDestination (parameters, common::ParameterId::idLfoDestination, "LFO DEST")
-    , mPortamento (parameters, common::ParameterId::idPortamento, "GLIDE")
-    , mVcfEnvelopeAmount (parameters, common::ParameterId::idVcfEnvelopeAmount, "VCF ENV")
-    , mLfoRandom (parameters, common::ParameterId::idLfoRandom, "LFO RAND")
-    , mLfoNoteRetrigger (parameters, common::ParameterId::idLfoNoteRetrigger, "LFO RETRIG")
-    , mOscillatorBWave (parameters, common::ParameterId::idOscillatorBWave, "OSC B")
+    , mEnvelopeAttack (parameterManager, common::ParameterId::idEnvelopeAttack, "ATTACK")
+    , mEnvelopeDecay (parameterManager, common::ParameterId::idEnvelopeDecay, "DECAY")
+    , mEnvelopeSustain (parameterManager, common::ParameterId::idSustain, "SUSTAIN")
+    , mFilterCutoff (parameterManager, common::ParameterId::idFilterCutoff, "CUTOFF")
+    , mOscillatorPulseWidth (parameterManager, common::ParameterId::idPulseWidth, "WIDTH")
+    , mOscillatorDetune (parameterManager, common::ParameterId::idOscillatorDetune, "DETUNE")
+    , mOscillatorBOctave (parameterManager, common::ParameterId::idOscillatorBOctave, "OCTAVE")
+    , mPwmSweep (parameterManager, common::ParameterId::idPWMSweep, "SWEEP")
+    , mLfoRate (parameterManager, common::ParameterId::idLfoRate, "RATE")
+    , mLfoDepth (parameterManager, common::ParameterId::idLfoDepth, "DEPTH")
+    , mLfoDestination (parameterManager, common::ParameterId::idLfoDestination, "LFO DEST")
+    , mPortamento (parameterManager, common::ParameterId::idPortamento, "GLIDE")
+    , mVcfEnvelopeAmount (parameterManager, common::ParameterId::idVcfEnvelopeAmount, "VCF ENV")
+    , mLfoRandom (parameterManager, common::ParameterId::idLfoRandom, "LFO RAND")
+    , mLfoNoteRetrigger (parameterManager, common::ParameterId::idLfoNoteRetrigger, "LFO RETRIG")
+    , mOscillatorBWave (parameterManager, common::ParameterId::idOscillatorBWave, "OSC B")
 {
     addAndMakeVisible (mMeeblipLogo);
     addAndMakeVisible (mAnodeLogo);

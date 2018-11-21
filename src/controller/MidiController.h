@@ -77,7 +77,7 @@ private:
     int                                     mMidiChannel;
     juce::MidiBuffer                        mMidiBuffer;
 
-    grape::parameters::ParameterManager&    mParameters;
+    grape::parameters::ParameterManager&    mParameterManager;
     common::ParameterMapper                 mParametersValues;
 
     grape::settings::SettingManager&        mSettingManager;

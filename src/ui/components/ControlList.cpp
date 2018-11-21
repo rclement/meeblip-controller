@@ -27,15 +27,15 @@ namespace ui {
 
 //==============================================================================
 
-ControlList::ControlList (grape::parameters::ParameterManager& parameters,
+ControlList::ControlList (grape::parameters::ParameterManager& parameterManager,
                           common::ParameterId parameterId,
                           const juce::String& label)
-    : mParameters (parameters)
+    : mParameterManager (parameterManager)
     , mParameterId (parameterId)
 {
     const auto param = common::sParameters.at (mParameterId);
 
-    const auto paramValue = *mParameters.getRawParameterValue (param.id);
+    const auto paramValue = *mParameterManager.getRawParameterValue (param.id);
     auto itemId = 1;
     for (
         float i = param.valueRange.start;
@@ -58,7 +58,7 @@ ControlList::ControlList (grape::parameters::ParameterManager& parameters,
     addAndMakeVisible (mComboBox);
 
     mComboBoxAttachment.reset (
-        new ComboBoxAttachment (mParameters, param.id, mComboBox)
+        new ComboBoxAttachment (mParameterManager, param.id, mComboBox)
     );
 
     mLabel.setFont (juce::Font (10));

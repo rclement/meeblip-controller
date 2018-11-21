@@ -45,7 +45,7 @@ public: // juce::Component
 private:
     typedef juce::AudioProcessorValueTreeState::ComboBoxAttachment ComboBoxAttachment;
 
-    grape::parameters::ParameterManager&    mParameters;
+    grape::parameters::ParameterManager&    mParameterManager;
     common::ParameterId                     mParameterId;
 
     juce::Label     mLabel;

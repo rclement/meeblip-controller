@@ -68,14 +68,14 @@ static juce::MidiMessage createParameterControl (common::ParameterId paramId,
 
 //==============================================================================
 
-MidiController::MidiController (grape::parameters::ParameterManager& parameters,
+MidiController::MidiController (grape::parameters::ParameterManager& parameterManager,
                                 grape::settings::SettingManager& settingManager,
                                 bool useMidiDevice)
     : mUseExternalMidi (useMidiDevice)
     , mMidiOutputDevices()
     , mMidiOutput (nullptr)
     , mMidiChannel (1)
-    , mParameters (parameters)
+    , mParameterManager (parameterManager)
     , mSettingManager (settingManager)
 {
     for (const auto& p : sParameterCcMapper)
@@ -84,7 +84,7 @@ MidiController::MidiController (grape::parameters::ParameterManager& parameters,
         const auto param    = common::sParameters.at (paramId);
 
         mParametersValues[paramId] = param.defaultValue;
-        mParameters.addParameterListener (param.id, this);
+        mParameterManager.addParameterListener (param.id, this);
     }
 
     mSettingManager.addListener (this);
@@ -102,7 +102,7 @@ MidiController::~MidiController()
         const auto paramId = p.first;
         const auto param = common::sParameters.at (paramId);
 
-        mParameters.removeParameterListener (param.id, this);
+        mParameterManager.removeParameterListener (param.id, this);
     }
 
     mSettingManager.removeListener (this);
@@ -193,7 +193,7 @@ void MidiController::synchronize()
     {
         const auto paramId  = p.first;
         const auto param    = common::sParameters.at (paramId);
-        const auto newValue = *mParameters.getRawParameterValue (param.id);
+        const auto newValue = *mParameterManager.getRawParameterValue (param.id);
 
         mParametersValues[paramId] = newValue;
         addMidiMessageToBuffer (paramId, newValue);
@@ -228,7 +228,7 @@ void MidiController::updateParametersValues()
         const auto param = common::sParameters.at (paramId);
 
         const auto currentValue = mParametersValues[paramId];
-        const auto newValue = *mParameters.getRawParameterValue (param.id);
+        const auto newValue = *mParameterManager.getRawParameterValue (param.id);
 
         if (newValue != currentValue)
         {

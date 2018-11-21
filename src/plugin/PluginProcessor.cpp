@@ -37,10 +37,10 @@ PluginProcessor::PluginProcessor()
               .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
       )
     , mUndoManager()
-    , mParameters (*this, &mUndoManager, common::sOrderedParameters)
-    , mPresetManager (mParameters)
+    , mParameterManager (*this, &mUndoManager, common::sOrderedParameters)
+    , mPresetManager (mParameterManager)
     , mSettingManager (common::sOrderedSettings, &mUndoManager)
-    , mMidiController (mParameters,
+    , mMidiController (mParameterManager,
                        mSettingManager,
                        wrapperType == WrapperType::wrapperType_Standalone)
 {
@@ -207,7 +207,7 @@ void PluginProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
     int xmlIndex = 0;
     std::unique_ptr<juce::XmlElement> xmlState (new juce::XmlElement ("state"));
-    xmlState->insertChildElement (mParameters.toXml(), xmlIndex++);
+    xmlState->insertChildElement (mParameterManager.toXml(), xmlIndex++);
     xmlState->insertChildElement (mPresetManager.toXml(), xmlIndex++);
     xmlState->insertChildElement (mSettingManager.toXml(), xmlIndex++);
     copyXmlToBinary (*xmlState, destData);
@@ -222,7 +222,7 @@ void PluginProcessor::setStateInformation (const void* data, int sizeInBytes)
         const auto xmlParameters = xmlState->getChildElement (xmlIndex++);
         if (xmlParameters != nullptr)
         {
-            mParameters.fromXml (*xmlParameters);
+            mParameterManager.fromXml (*xmlParameters);
         }
 
         const auto xmlCurrentPreset = xmlState->getChildElement (xmlIndex++);

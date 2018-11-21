@@ -27,10 +27,10 @@ namespace ui {
 
 //==============================================================================
 
-ControlKnob::ControlKnob (grape::parameters::ParameterManager& parameters,
+ControlKnob::ControlKnob (grape::parameters::ParameterManager& parameterManager,
                           common::ParameterId parameterId,
                           const juce::String& label)
-    : mParameters (parameters)
+    : mParameterManager (parameterManager)
     , mParameterId (parameterId)
 {
     const auto param = common::sParameters.at (mParameterId);
@@ -42,7 +42,7 @@ ControlKnob::ControlKnob (grape::parameters::ParameterManager& parameters,
     addAndMakeVisible (mSlider);
 
     mSliderAttachment.reset (
-        new SliderAttachment (mParameters, param.id, mSlider)
+        new SliderAttachment (mParameterManager, param.id, mSlider)
     );
 
     mLabel.setFont (juce::Font (10));
