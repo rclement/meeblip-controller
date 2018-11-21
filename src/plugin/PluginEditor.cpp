@@ -30,7 +30,7 @@ namespace plugin {
 
 PluginEditor::PluginEditor (PluginProcessor& processor)
     : AudioProcessorEditor (&processor)
-    , mPresetPanel (processor.getPresetManager())
+    , mPresetPanel (processor.getPresetManager(), processor.getUndoManager())
     , mControlPanel (processor.getParameterManager(),
                      processor.getMidiController())
     , mSettingsPanel (processor.getMidiController())

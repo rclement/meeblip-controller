@@ -32,9 +32,10 @@ namespace ui {
 //==============================================================================
 
 class PresetPanel : public juce::Component
+                  , private juce::ChangeListener
 {
 public:
-    PresetPanel (grape::presets::PresetManager&);
+    PresetPanel (grape::presets::PresetManager&, juce::UndoManager&);
     ~PresetPanel();
 
 public: // juce::Component
@@ -42,8 +43,17 @@ public: // juce::Component
     void paint (juce::Graphics&) override;
 
 private:
+    void updateUndoRedoState();
+
+private: // juce::ChangeListener
+    void changeListenerCallback (juce::ChangeBroadcaster*) override;
+
+private:
+    juce::UndoManager&      mUndoManager;
     juce::DrawableButton    mLogo;
     PresetBar               mPresetBar;
+    juce::TextButton        mUndo;
+    juce::TextButton        mRedo;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PresetPanel)
 };

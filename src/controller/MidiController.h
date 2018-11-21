@@ -46,21 +46,31 @@ public:
 public:
     void setUseExternalMidi (bool);
     inline bool getUseExternalMidi() const { return mUseExternalMidi; }
+
     juce::StringArray getMidiOutputDevices() const;
     void updateMidiOutputDevices();
     bool selectDefaultMidiOutputDevice();
     bool selectMidiOutputDevice (int index);
-    bool selectMidiOutputDeviceByName (const juce::String&);
     juce::String getSelectedMidiOutputDevice() const;
+
     void setMidiChannel (int channel);
     inline int getMidiChannel() const { return mMidiChannel; }
+
     void synchronize();
+
     juce::MidiBuffer extractMidiBuffer();
 
 private:
     void sendMidiBuffer();
+
     void updateParametersValues();
     void updateSettingsValues();
+
+    void updateUseExternalMidi (bool);
+    void updateMidiOutputDevice (int);
+    void updateMidiOutputDeviceByName (const juce::String&);
+    void updateMidiChannel (int);
+
     void addMidiMessageToBuffer (common::ParameterId, float);
 
 private: // juce::AudioProcessorValueTreeState::Listener

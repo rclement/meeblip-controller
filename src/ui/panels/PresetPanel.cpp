@@ -30,8 +30,10 @@ namespace ui {
 
 //==============================================================================
 
-PresetPanel::PresetPanel (grape::presets::PresetManager& presetManager)
-    : mLogo ("logo", juce::DrawableButton::ButtonStyle::ImageStretched)
+PresetPanel::PresetPanel (grape::presets::PresetManager& presetManager,
+                          juce::UndoManager& undoManager)
+    : mUndoManager (undoManager)
+    , mLogo ("logo", juce::DrawableButton::ButtonStyle::ImageStretched)
     , mPresetBar (presetManager)
 {
     {
@@ -65,11 +67,24 @@ PresetPanel::PresetPanel (grape::presets::PresetManager& presetManager)
     addAndMakeVisible (mLogo);
 
     addAndMakeVisible (mPresetBar);
+
+    mUndo.onClick = [this] { mUndoManager.undo(); };
+    mUndo.setButtonText ("Undo");
+    mUndo.setConnectedEdges (juce::Button::ConnectedEdgeFlags::ConnectedOnRight);
+    addAndMakeVisible (mUndo);
+
+    mRedo.onClick = [this] { mUndoManager.redo(); };
+    mRedo.setButtonText ("Redo");
+    mRedo.setConnectedEdges (juce::Button::ConnectedEdgeFlags::ConnectedOnLeft);
+    addAndMakeVisible (mRedo);
+
+    mUndoManager.addChangeListener (this);
+    updateUndoRedoState();
 }
 
 PresetPanel::~PresetPanel()
 {
-
+    mUndoManager.removeChangeListener (this);
 }
 
 //==============================================================================
@@ -78,12 +93,14 @@ void PresetPanel::resized()
 {
     static const auto sVerticalMargin   = 10;
     static const auto sHorizontalMargin = 20;
+    static const auto sButtonWidth      = 40;
+    static const auto sButtonHeight     = 20;
 
     const auto bounds           = getLocalBounds();
     const auto logoSize         = juce::Rectangle<int> (bounds.getHeight(), bounds.getHeight());
     const auto presetBarSize    = juce::Rectangle<int> (
-        bounds.getWidth() - logoSize.getWidth() - sHorizontalMargin * 3,
-        20
+        bounds.getWidth() - logoSize.getWidth() - sButtonWidth * 2 - sHorizontalMargin * 4,
+        sButtonHeight
     );
 
     mLogo.setBounds (
@@ -99,6 +116,20 @@ void PresetPanel::resized()
         presetBarSize.getWidth(),
         presetBarSize.getHeight()
     );
+
+    mUndo.setBounds (
+        mPresetBar.getRight() + sHorizontalMargin,
+        mPresetBar.getY(),
+        sButtonWidth,
+        sButtonHeight
+    );
+
+    mRedo.setBounds (
+        mUndo.getRight() - 1,
+        mUndo.getY(),
+        sButtonWidth,
+        sButtonHeight
+    );
 }
 
 void PresetPanel::paint (juce::Graphics& g)
@@ -113,6 +144,24 @@ void PresetPanel::paint (juce::Graphics& g)
         bounds.getBottom(),
         2
     );
+}
+
+//==============================================================================
+
+void PresetPanel::updateUndoRedoState()
+{
+    mUndo.setEnabled (mUndoManager.canUndo());
+    mRedo.setEnabled (mUndoManager.canRedo());
+}
+
+//==============================================================================
+
+void PresetPanel::changeListenerCallback (juce::ChangeBroadcaster* source)
+{
+    if (source != nullptr && source == &mUndoManager)
+    {
+        updateUndoRedoState();
+    }
 }
 
 //==============================================================================

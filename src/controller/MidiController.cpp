@@ -90,7 +90,6 @@ MidiController::MidiController (grape::parameters::ParameterManager& parameterMa
     mSettingManager.addListener (this);
     setUseExternalMidi (mUseExternalMidi);
 
-    updateMidiOutputDevices();
     updateSettingsValues();
     updateParametersValues();
 }
@@ -114,7 +113,7 @@ void MidiController::setUseExternalMidi (bool useExternalMidi)
 {
     const auto useExternalMidiSetting = common::sSettings.at (common::SettingId::idUseExternalMidi);
 
-    mUseExternalMidi = useExternalMidi;
+    updateUseExternalMidi (useExternalMidi);
     mSettingManager.setSetting (useExternalMidiSetting.id, juce::var (mUseExternalMidi));
 }
 
@@ -135,37 +134,21 @@ bool MidiController::selectDefaultMidiOutputDevice()
 
 bool MidiController::selectMidiOutputDevice (int index)
 {
-    if (!mUseExternalMidi)
-        return false;
+    updateMidiOutputDevice (index);
 
-    const auto device = juce::MidiOutput::openDevice (index);
-    if (device != nullptr)
+    if (mMidiOutput.get() != nullptr)
     {
-        const auto midiDeviceSetting = common::sSettings.at (common::SettingId::idMidiDevice);
+        const auto midiDeviceSetting    = common::sSettings.at (common::SettingId::idMidiDevice);
+        const auto midiDeviceName       = mMidiOutput->getName();
 
-        mMidiOutput.reset (device);
         mSettingManager.setSetting (
             midiDeviceSetting.id,
-            juce::var (mMidiOutput->getName())
+            juce::var (midiDeviceName)
         );
 
         return true;
     }
-    return false;
-}
 
-bool MidiController::selectMidiOutputDeviceByName (const juce::String& deviceName)
-{
-    updateMidiOutputDevices();
-    for (int i = 0; i < mMidiOutputDevices.size(); ++i)
-    {
-        const auto d = mMidiOutputDevices[i];
-        if (d == deviceName)
-        {
-            selectMidiOutputDevice (i);
-            return true;
-        }
-    }
     return false;
 }
 
@@ -179,11 +162,9 @@ juce::String MidiController::getSelectedMidiOutputDevice() const
 
 void MidiController::setMidiChannel (int channel)
 {
-    jassert (channel > 0 && channel <= 16);
-
     const auto midiChannelSetting = common::sSettings.at (common::SettingId::idMidiChannel);
 
-    mMidiChannel = channel;
+    updateMidiChannel (channel);
     mSettingManager.setSetting (midiChannelSetting.id, juce::var (mMidiChannel));
 }
 
@@ -245,20 +226,61 @@ void MidiController::updateSettingsValues()
     {
         const auto useExternalMidiSetting   = common::sSettings.at (common::SettingId::idUseExternalMidi);
         const auto useExternalMidi          = mSettingManager.getSetting (useExternalMidiSetting.id);
-        setUseExternalMidi (bool (useExternalMidi));
+        updateUseExternalMidi (bool (useExternalMidi));
     }
 
     {
         const auto midiDeviceSetting    = common::sSettings.at (common::SettingId::idMidiDevice);
         const auto midiDevice           = mSettingManager.getSetting (midiDeviceSetting.id);
-        selectMidiOutputDeviceByName (midiDevice.toString());
+        updateMidiOutputDeviceByName (midiDevice.toString());
     }
 
     {
         const auto midiChannelSetting   = common::sSettings.at (common::SettingId::idMidiChannel);
         const auto midiChannel          = mSettingManager.getSetting (midiChannelSetting.id);
-        setMidiChannel (int (midiChannel));
+        updateMidiChannel (int (midiChannel));
     }
+}
+
+void MidiController::updateUseExternalMidi (bool useExternalMidi)
+{
+    mUseExternalMidi = useExternalMidi;
+}
+
+void MidiController::updateMidiOutputDevice (int deviceIndex)
+{
+    if (!mUseExternalMidi)
+    {
+        mMidiOutput.reset();
+        return;
+    }
+
+    const auto device = juce::MidiOutput::openDevice (deviceIndex);
+    if (device != nullptr)
+    {
+        mMidiOutput.reset (device);
+    }
+}
+
+void MidiController::updateMidiOutputDeviceByName (const juce::String& deviceName)
+{
+    updateMidiOutputDevices();
+
+    for (int i = 0; i < mMidiOutputDevices.size(); ++i)
+    {
+        const auto d = mMidiOutputDevices[i];
+        if (d == deviceName)
+        {
+            updateMidiOutputDevice (i);
+        }
+    }
+}
+
+void MidiController::updateMidiChannel (int channel)
+{
+    jassert (channel > 0 && channel <= 16);
+
+    mMidiChannel = channel;
 }
 
 void MidiController::addMidiMessageToBuffer (common::ParameterId paramId, float newValue)

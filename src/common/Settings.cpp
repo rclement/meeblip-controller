@@ -33,7 +33,7 @@ const std::map<SettingId, grape::settings::Setting> sSettings =
     {
         SettingId::idUseExternalMidi,
         {
-            "user-external-midi",
+            "use-external-midi",
             "Use External MIDI",
             false,
             grape::helpers::varValueToText,
@@ -64,6 +64,7 @@ const std::map<SettingId, grape::settings::Setting> sSettings =
 
 const std::vector<grape::settings::Setting> sOrderedSettings =
 {{
+    sSettings.at (SettingId::idUseExternalMidi),
     sSettings.at (SettingId::idMidiDevice),
     sSettings.at (SettingId::idMidiChannel),
 }};
