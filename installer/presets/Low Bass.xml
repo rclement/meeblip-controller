@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <preset manufacturer="524d4e43" plugin="4d424354" version="1" author="Romain Clement"
-        comments="All you need is the 5th">
+        comments="Nice soft rounded bass">
   <state>
     <parameters>
       <PARAM id="envelope-attack" value="0.00000000000000000000"/>
-      <PARAM id="envelope-decay" value="64.00000000000000000000"/>
-      <PARAM id="filter-cutoff" value="44.00000000000000000000"/>
-      <PARAM id="pulse-width" value="127.00000000000000000000"/>
+      <PARAM id="envelope-decay" value="127.00000000000000000000"/>
+      <PARAM id="filter-cutoff" value="30.00000000000000000000"/>
+      <PARAM id="pulse-width" value="90.00000000000000000000"/>
       <PARAM id="oscillator-detune" value="106.00000000000000000000"/>
-      <PARAM id="lfo-rate" value="0.00000000000000000000"/>
-      <PARAM id="lfo-depth" value="0.00000000000000000000"/>
-      <PARAM id="portamento" value="0.00000000000000000000"/>
-      <PARAM id="vcf-envelope-amount" value="64.00000000000000000000"/>
+      <PARAM id="lfo-rate" value="46.00000000000000000000"/>
+      <PARAM id="lfo-depth" value="38.00000000000000000000"/>
+      <PARAM id="portamento" value="33.00000000000000000000"/>
+      <PARAM id="vcf-envelope-amount" value="20.00000000000000000000"/>
       <PARAM id="sustain" value="0.00000000000000000000"/>
       <PARAM id="oscillator-b-octave" value="0.00000000000000000000"/>
       <PARAM id="pwm-sweep" value="0.00000000000000000000"/>

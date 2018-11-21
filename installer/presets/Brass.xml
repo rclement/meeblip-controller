@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <preset manufacturer="524d4e43" plugin="4d424354" version="1" author="Romain Clement"
-        comments="Find the 4th, Luke...">
+        comments="Em-brass it">
   <state>
     <parameters>
-      <PARAM id="envelope-attack" value="0.00000000000000000000"/>
-      <PARAM id="envelope-decay" value="64.00000000000000000000"/>
-      <PARAM id="filter-cutoff" value="34.00000000000000000000"/>
-      <PARAM id="pulse-width" value="64.00000000000000000000"/>
-      <PARAM id="oscillator-detune" value="106.00000000000000000000"/>
-      <PARAM id="lfo-rate" value="0.00000000000000000000"/>
+      <PARAM id="envelope-attack" value="36.00000000000000000000"/>
+      <PARAM id="envelope-decay" value="55.00000000000000000000"/>
+      <PARAM id="filter-cutoff" value="40.00000000000000000000"/>
+      <PARAM id="pulse-width" value="48.00000000000000000000"/>
+      <PARAM id="oscillator-detune" value="64.00000000000000000000"/>
+      <PARAM id="lfo-rate" value="64.00000000000000000000"/>
       <PARAM id="lfo-depth" value="0.00000000000000000000"/>
-      <PARAM id="portamento" value="0.00000000000000000000"/>
+      <PARAM id="portamento" value="30.00000000000000000000"/>
       <PARAM id="vcf-envelope-amount" value="64.00000000000000000000"/>
       <PARAM id="sustain" value="0.00000000000000000000"/>
       <PARAM id="oscillator-b-octave" value="1.00000000000000000000"/>
@@ -19,7 +19,7 @@
       <PARAM id="lfo-destination" value="1.00000000000000000000"/>
       <PARAM id="lfo-random" value="0.00000000000000000000"/>
       <PARAM id="lfo-note-retrigger" value="0.00000000000000000000"/>
-      <PARAM id="oscillator-b-wave" value="0.00000000000000000000"/>
+      <PARAM id="oscillator-b-wave" value="1.00000000000000000000"/>
     </parameters>
   </state>
 </preset>
