@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<preset manufacturer="524d4e43" plugin="4d424354" version="1" author="Romain Clement"
+        comments="Roll the dice">
+  <state>
+    <parameters>
+      <PARAM id="envelope-attack" value="34.00000000000000000000"/>
+      <PARAM id="envelope-decay" value="99.00000000000000000000"/>
+      <PARAM id="filter-cutoff" value="39.00000000000000000000"/>
+      <PARAM id="pulse-width" value="70.00000000000000000000"/>
+      <PARAM id="oscillator-detune" value="64.00000000000000000000"/>
+      <PARAM id="lfo-rate" value="70.00000000000000000000"/>
+      <PARAM id="lfo-depth" value="95.00000000000000000000"/>
+      <PARAM id="portamento" value="48.00000000000000000000"/>
+      <PARAM id="vcf-envelope-amount" value="42.00000000000000000000"/>
+      <PARAM id="sustain" value="0.00000000000000000000"/>
+      <PARAM id="oscillator-b-octave" value="1.00000000000000000000"/>
+      <PARAM id="pwm-sweep" value="1.00000000000000000000"/>
+      <PARAM id="lfo-destination" value="1.00000000000000000000"/>
+      <PARAM id="lfo-random" value="1.00000000000000000000"/>
+      <PARAM id="lfo-note-retrigger" value="1.00000000000000000000"/>
+      <PARAM id="oscillator-b-wave" value="0.00000000000000000000"/>
+    </parameters>
+  </state>
+</preset>

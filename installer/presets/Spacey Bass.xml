@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<preset manufacturer="524d4e43" plugin="4d424354" version="1" author="Romain Clement"
+        comments="Wide chorus-y bass">
+  <state>
+    <parameters>
+      <PARAM id="envelope-attack" value="0.00000000000000000000"/>
+      <PARAM id="envelope-decay" value="64.00000000000000000000"/>
+      <PARAM id="filter-cutoff" value="23.00000000000000000000"/>
+      <PARAM id="pulse-width" value="88.00000000000000000000"/>
+      <PARAM id="oscillator-detune" value="72.00000000000000000000"/>
+      <PARAM id="lfo-rate" value="71.00000000000000000000"/>
+      <PARAM id="lfo-depth" value="65.00000000000000000000"/>
+      <PARAM id="portamento" value="0.00000000000000000000"/>
+      <PARAM id="vcf-envelope-amount" value="42.00000000000000000000"/>
+      <PARAM id="sustain" value="0.00000000000000000000"/>
+      <PARAM id="oscillator-b-octave" value="0.00000000000000000000"/>
+      <PARAM id="pwm-sweep" value="0.00000000000000000000"/>
+      <PARAM id="lfo-destination" value="1.00000000000000000000"/>
+      <PARAM id="lfo-random" value="0.00000000000000000000"/>
+      <PARAM id="lfo-note-retrigger" value="0.00000000000000000000"/>
+      <PARAM id="oscillator-b-wave" value="0.00000000000000000000"/>
+    </parameters>
+  </state>
+</preset>

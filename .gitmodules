@@ -1,0 +1,15 @@
+[submodule "sdks/juce"]
+	path = sdks/juce
+	url = https://github.com/WeAreROLI/JUCE
+[submodule "sdks/frut"]
+	path = sdks/frut
+	url = https://github.com/McMartin/FRUT
+[submodule "sdks/vst"]
+	path = sdks/vst
+	url = https://github.com/steinbergmedia/vst3sdk
+[submodule "sdks/grape"]
+	path = sdks/grape
+	url = https://github.com/rclement/grape
+[submodule "sdks/pluginval"]
+	path = sdks/pluginval
+	url = https://github.com/Tracktion/pluginval

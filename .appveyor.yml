@@ -1,0 +1,31 @@
+clone_depth: 50
+
+environment:
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: 'Visual Studio 2017'
+
+install:
+  - 'set PATH="C:\Python37-x64";%PATH%'
+  - 'set PATH="C:\Program Files (x86)\Inno Setup 5";%PATH%'
+  - 'cmake --version'
+  - 'python --version'
+
+build_script:
+  - 'python ci/all.py'
+
+artifacts:
+  - path: 'build\installer\output\*.zip'
+    name: 'installer'
+
+deploy:
+  provider: GitHub
+  auth_token:
+    secure: +MJsWuNJzKj+2s702OurcBXR0INATgPi411DKBGFNhQNiq41KCceKio+oo0b32g0
+  description: 'Test release'
+  artifact: 'installer'
+  draft: true
+  prerelease: false
+  on:
+    branch: master
+    appveyor_repo_tag: true
+
