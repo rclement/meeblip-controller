@@ -16,7 +16,9 @@ def _build_installer():
     )
 
     installer_output_name = installer_output_basename
-    installer_output_arcname = installer_output_basename + '.zip'
+    installer_output_arcname = (
+        installer_output_basename + '.zip'
+    ).replace(' ', '_')
 
     if platform_name == 'Darwin':
         installer_path = os.path.join(

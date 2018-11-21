@@ -56,7 +56,7 @@ def load_app_metadata():
                 app_version=app_metadata['APP_VERSION'],
                 app_os='MacOS' if platform_name == 'Darwin' else 'Windows'
             )
-    ).replace(' ', '_')
+    )
 
 
 load_app_metadata()
