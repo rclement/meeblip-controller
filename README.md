@@ -83,7 +83,12 @@ Currently supported features:
 
 # Acknowledgments
 
-This software makes use of the following third-party dependencies:
+This project was inspired by:
+
+- [Meeblip Web Editor](https://editor.meeblip.com)
+- [MyBlip Anode](http://www.dr-midik.fr/site/index.php?post/ticket_MyBlip-anode_2014-04-28)
+
+This software makes use of the following third-party software:
 
 - [FRUT](https://github.com/McMartin/FRUT) licensed under GPLv3
 - [GRAPE](https://github.com/rclement/grape) licensed under MIT
@@ -91,10 +96,9 @@ This software makes use of the following third-party dependencies:
 - [pluginval](https://github.com/Tracktion/pluginval) licensed under GPLv3
 - [vst3sdk](https://github.com/steinbergmedia/vst3sdk) licensed under GPLv3
 
-This project was inspired by:
+This software makes use of the following third-party graphic material:
 
-- [Meeblip Web Editor](https://editor.meeblip.com)
-- [MyBlip Anode](http://www.dr-midik.fr/site/index.php?post/ticket_MyBlip-anode_2014-04-28)
+- [Meeblip Web](https://github.com/MeeBlip/meeblip-web) licensed under GPLv3
 
 
 # License
