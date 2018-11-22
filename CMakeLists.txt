@@ -11,12 +11,17 @@ endforeach()
 
 # set extra metadata
 set(APP_ROOT_DIR "${CMAKE_CURRENT_LIST_DIR}")
-if(APPLE)
+if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Darwin")
     set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}")
     set(APP_OUTPUT_BASENAME "${APP_NAME} - ${APP_VERSION} - MacOS")
-else()
+elseif(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
     set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/..")
     set(APP_OUTPUT_BASENAME "${APP_NAME} - ${APP_VERSION} - Windows")
+elseif(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
+    set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}")
+    set(APP_OUTPUT_BASENAME "${APP_NAME} - ${APP_VERSION} - Linux")
+else()
+    message(FATAL_ERROR "Unsupported system: ${CMAKE_HOST_SYSTEM_NAME}")
 endif()
 set(APP_OUTPUT_DIR "${APP_BUILD_DIR}/installer/output")
 
@@ -383,8 +388,8 @@ jucer_export_target_configuration(
 
 jucer_export_target(
   "Linux Makefile"
-  VST3_SDK_FOLDER
-    "sdks/vst"
+  # VST3_SDK_FOLDER
+  #   "sdks/vst"
   ICON_SMALL
     "installer/resources/app-icon@1x.png"
   ICON_LARGE
