@@ -32,6 +32,7 @@ def _build_pluginval():
 
 
 def _validate_plugins():
+    app_name = app_metadata['APP_NAME']
     build_path = os.path.abspath(build_dir)
     pluginval_bin_path = None
     plugin_paths = []
@@ -44,9 +45,9 @@ def _validate_plugins():
 
         for c in build_configs:
             plugin_paths += [
-                os.path.join(build_path, c, 'Meeblip Controller.component'),
-                os.path.join(build_path, c, 'Meeblip Controller.vst'),
-                os.path.join(build_path, c, 'Meeblip Controller.vst3'),
+                os.path.join(build_path, c, '{app_name}.component'.format(app_name=app_name)),
+                os.path.join(build_path, c, '{app_name}.vst'.format(app_name=app_name)),
+                os.path.join(build_path, c, '{app_name}.vst3'.format(app_name=app_name)),
             ]
     elif platform_name == 'Windows':
         pluginval_bin_path = os.path.join(
@@ -57,8 +58,8 @@ def _validate_plugins():
         for c in build_configs:
             arch_x64 = build_archs_win[1]
             plugin_paths += [
-                os.path.join(build_path, arch_x64, c, 'VST', 'Meeblip Controller.dll'),
-                os.path.join(build_path, arch_x64, c, 'VST3', 'Meeblip Controller.vst3'),
+                os.path.join(build_path, arch_x64, c, 'VST', '{app_name}.dll'.format(app_name=app_name)),
+                os.path.join(build_path, arch_x64, c, 'VST3', '{app_name}.vst3'.format(app_name)),
             ]
     elif platform_name == 'Linux':
         pluginval_bin_path = os.path.join(
@@ -67,7 +68,7 @@ def _validate_plugins():
         )
 
         plugin_paths += [
-            os.path.join(build_path, 'libMeeblip Controller.so')
+            os.path.join(build_path, 'lib{app_name}.so'.format(app_name=app_name))
         ]
 
     for p in plugin_paths:
