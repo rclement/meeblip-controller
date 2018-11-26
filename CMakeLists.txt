@@ -12,30 +12,30 @@ endforeach()
 # set extra metadata
 set(APP_ROOT_DIR "${CMAKE_CURRENT_LIST_DIR}")
 if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Darwin")
-    set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}")
-    set(APP_OUTPUT_BASENAME "${APP_NAME} - ${APP_VERSION} - MacOS")
+  set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}")
+  set(APP_OUTPUT_BASENAME "${APP_NAME} - ${APP_VERSION} - MacOS")
 elseif(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
-    set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/..")
-    set(APP_OUTPUT_BASENAME "${APP_NAME} - ${APP_VERSION} - Windows")
+  set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/..")
+  set(APP_OUTPUT_BASENAME "${APP_NAME} - ${APP_VERSION} - Windows")
 elseif(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
-    set(CMAKE_C_COMPILER "/usr/bin/clang")
-    set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
-    set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}")
-    set(APP_OUTPUT_BASENAME "${APP_NAME} - ${APP_VERSION} - Linux")
+  set(CMAKE_C_COMPILER "/usr/bin/clang")
+  set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
+  set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}")
+  set(APP_OUTPUT_BASENAME "${APP_NAME} - ${APP_VERSION} - Linux")
 else()
-    message(FATAL_ERROR "Unsupported system: ${CMAKE_HOST_SYSTEM_NAME}")
+  message(FATAL_ERROR "Unsupported system: ${CMAKE_HOST_SYSTEM_NAME}")
 endif()
 set(APP_OUTPUT_DIR "${APP_BUILD_DIR}/installer/output")
 
 # generate template files
 configure_file(
-    "${APP_ROOT_DIR}/installer/meeblip-controller.pkgproj"
-    "${APP_BUILD_DIR}/installer/meeblip-controller.pkgproj"
+  "${APP_ROOT_DIR}/installer/meeblip-controller.pkgproj"
+  "${APP_BUILD_DIR}/installer/meeblip-controller.pkgproj"
 )
 
 configure_file(
-    "${APP_ROOT_DIR}/installer/meeblip-controller.iss"
-    "${APP_BUILD_DIR}/installer/meeblip-controller.iss"
+  "${APP_ROOT_DIR}/installer/meeblip-controller.iss"
+  "${APP_BUILD_DIR}/installer/meeblip-controller.iss"
 )
 
 project("${APP_NAME}")
