@@ -390,6 +390,8 @@ jucer_export_target_configuration(
 
 jucer_export_target(
   "Linux Makefile"
+  PKGCONFIG_LIBRARIES
+    "webkit2gtk-4.0"
   # VST3_SDK_FOLDER
   #   "sdks/vst"
   ICON_SMALL

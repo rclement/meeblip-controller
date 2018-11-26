@@ -42,6 +42,12 @@ Currently supported features:
 - `InnoSetup` (Windows only)
 - `Visual Studio` >= 2017 (Windows only)
 
+For Linux, the following packages are required:
+
+```
+git python3 cmake clang freeglut3-dev libasound2-dev libcurl4-openssl-dev libfreetype6-dev libjack-jackd2-dev libx11-dev libxcomposite-dev libxcursor-dev libxinerama-dev libxrandr-dev mesa-common-dev libwebkit2gtk-4.0-dev ladspa-sdk
+```
+
 ## Automated
 
 ```
