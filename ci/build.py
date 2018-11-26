@@ -82,11 +82,14 @@ def _build_plugin():
         os.chdir(build_path)
         root_path_rel = os.path.relpath(root_path)
 
-        run_cmd('cmake {path} -G "Unix Makefiles"'.format(path=root_path_rel))
-
         for config in build_configs:
             run_cmd(
-                'cmake --build . --clean-first --config {config}'
+                'cmake {path} -G "Unix Makefiles" -DCMAKE_BUILD_TYPE={config}'
+                    .format(path=root_path_rel, config=config)
+            )
+
+            run_cmd(
+                'cmake --build . --clean-first'
                     .format(config=config)
             )
 

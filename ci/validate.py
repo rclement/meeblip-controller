@@ -66,11 +66,9 @@ def _validate_plugins():
             'bin', 'linux', 'pluginval'
         )
 
-        for c in build_configs:
-            plugin_paths += [
-                os.path.join(build_path, c, 'Meeblip Controller.vst'),
-                os.path.join(build_path, c, 'Meeblip Controller.vst3'),
-            ]
+        plugin_paths += [
+            os.path.join(build_path, 'libMeeblip Controller.so')
+        ]
 
     for p in plugin_paths:
         run_cmd(
