@@ -390,6 +390,8 @@ jucer_export_target_configuration(
 
 jucer_export_target(
   "Linux Makefile"
+  EXTRA_PREPROCESSOR_DEFINITIONS
+    "-DJUCE_ALSA=0"
   EXTRA_COMPILER_FLAGS
     "-fPIC"
   PKGCONFIG_LIBRARIES
