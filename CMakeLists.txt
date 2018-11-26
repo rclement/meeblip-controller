@@ -390,6 +390,8 @@ jucer_export_target_configuration(
 
 jucer_export_target(
   "Linux Makefile"
+  EXTRA_COMPILER_FLAGS
+    "-fPIC"
   PKGCONFIG_LIBRARIES
     "webkit2gtk-4.0"
   # VST3_SDK_FOLDER
