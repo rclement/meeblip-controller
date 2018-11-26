@@ -18,6 +18,7 @@ matrix:
       addons:
         apt:
           packages:
+            - clang
             - freeglut3-dev
             - libasound2-dev
             - libcurl4-openssl-dev
