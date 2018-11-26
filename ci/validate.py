@@ -59,7 +59,7 @@ def _validate_plugins():
             arch_x64 = build_archs_win[1]
             plugin_paths += [
                 os.path.join(build_path, arch_x64, c, 'VST', '{app_name}.dll'.format(app_name=app_name)),
-                os.path.join(build_path, arch_x64, c, 'VST3', '{app_name}.vst3'.format(app_name)),
+                os.path.join(build_path, arch_x64, c, 'VST3', '{app_name}.vst3'.format(app_name=app_name)),
             ]
     elif platform_name == 'Linux':
         pluginval_bin_path = os.path.join(
