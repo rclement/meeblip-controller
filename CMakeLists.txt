@@ -10,6 +10,8 @@ foreach(metadata ${AppMetadata})
 endforeach()
 
 # set extra metadata
+string(REPLACE " " "_" app_name_safe ${APP_NAME})
+set(APP_NAME_SAFE "${app_name_safe}")
 set(APP_ROOT_DIR "${CMAKE_CURRENT_LIST_DIR}")
 if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Darwin")
   set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}")
@@ -36,6 +38,16 @@ configure_file(
 configure_file(
   "${APP_ROOT_DIR}/installer/meeblip-controller.iss"
   "${APP_BUILD_DIR}/installer/meeblip-controller.iss"
+)
+
+configure_file(
+  "${APP_ROOT_DIR}/installer/meeblip-controller.sh"
+  "${APP_BUILD_DIR}/installer/meeblip-controller.sh"
+)
+
+configure_file(
+  "${APP_ROOT_DIR}/installer/resources/application.desktop.in"
+  "${APP_BUILD_DIR}/installer/resources/application.desktop"
 )
 
 project("${APP_NAME}")
