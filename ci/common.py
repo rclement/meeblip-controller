@@ -4,7 +4,7 @@ import subprocess
 
 
 platform_name = platform.system()
-supported_platforms = ['Darwin', 'Windows']
+supported_platforms = ['Darwin', 'Windows', 'Linux']
 
 juce_path = os.path.abspath('sdks/juce')
 frut_path = os.path.abspath('sdks/frut')
@@ -21,7 +21,7 @@ app_metadata = {}
 def run_cmd(cmd):
     rv = None
 
-    if platform_name == 'Darwin':
+    if platform_name in ['Darwin', 'Linux']:
         rv = subprocess.run([cmd], shell=True)
     elif platform_name == 'Windows':
         rv = subprocess.run(cmd, shell=True)
@@ -54,7 +54,7 @@ def load_app_metadata():
             .format(
                 app_name=app_metadata['APP_NAME'],
                 app_version=app_metadata['APP_VERSION'],
-                app_os='MacOS' if platform_name == 'Darwin' else 'Windows'
+                app_os='MacOS' if platform_name == 'Darwin' else platform_name
             )
     )
 

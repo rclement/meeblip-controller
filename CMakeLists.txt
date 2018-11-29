@@ -10,25 +10,54 @@ foreach(metadata ${AppMetadata})
 endforeach()
 
 # set extra metadata
+string(REPLACE " " "_" app_name_safe ${APP_NAME})
+set(APP_NAME_SAFE "${app_name_safe}")
 set(APP_ROOT_DIR "${CMAKE_CURRENT_LIST_DIR}")
-if(APPLE)
-    set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}")
-    set(APP_OUTPUT_BASENAME "${APP_NAME} - ${APP_VERSION} - MacOS")
+if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Darwin")
+  set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}")
+  set(APP_OUTPUT_BASENAME "${APP_NAME} - ${APP_VERSION} - MacOS")
+elseif(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
+  set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/..")
+  set(APP_OUTPUT_BASENAME "${APP_NAME} - ${APP_VERSION} - Windows")
+elseif(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
+  set(CMAKE_C_COMPILER "/usr/bin/clang")
+  set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
+  set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}")
+  set(APP_OUTPUT_BASENAME "${APP_NAME} - ${APP_VERSION} - Linux")
 else()
-    set(APP_BUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/..")
-    set(APP_OUTPUT_BASENAME "${APP_NAME} - ${APP_VERSION} - Windows")
+  message(FATAL_ERROR "Unsupported system: ${CMAKE_HOST_SYSTEM_NAME}")
 endif()
 set(APP_OUTPUT_DIR "${APP_BUILD_DIR}/installer/output")
 
 # generate template files
 configure_file(
-    "${APP_ROOT_DIR}/installer/meeblip-controller.pkgproj"
-    "${APP_BUILD_DIR}/installer/meeblip-controller.pkgproj"
+  "${APP_ROOT_DIR}/installer/meeblip-controller.pkgproj"
+  "${APP_BUILD_DIR}/installer/meeblip-controller.pkgproj"
 )
 
 configure_file(
-    "${APP_ROOT_DIR}/installer/meeblip-controller.iss"
-    "${APP_BUILD_DIR}/installer/meeblip-controller.iss"
+  "${APP_ROOT_DIR}/installer/meeblip-controller.iss"
+  "${APP_BUILD_DIR}/installer/meeblip-controller.iss"
+)
+
+configure_file(
+  "${APP_ROOT_DIR}/installer/meeblip-controller.sh"
+  "${APP_BUILD_DIR}/installer/meeblip-controller.sh"
+)
+
+configure_file(
+  "${APP_ROOT_DIR}/installer/resources/application.desktop.in"
+  "${APP_BUILD_DIR}/installer/resources/application.desktop"
+)
+
+configure_file(
+  "${APP_ROOT_DIR}/installer/resources/install.sh"
+  "${APP_BUILD_DIR}/installer/resources/install.sh"
+)
+
+configure_file(
+  "${APP_ROOT_DIR}/installer/resources/uninstall.sh"
+  "${APP_BUILD_DIR}/installer/resources/uninstall.sh"
 )
 
 project("${APP_NAME}")
@@ -377,6 +406,34 @@ jucer_export_target_configuration(
 
 jucer_export_target_configuration(
   "Visual Studio 2017"
+  NAME "Release"
+  DEBUG_MODE OFF
+)
+
+jucer_export_target(
+  "Linux Makefile"
+  EXTRA_PREPROCESSOR_DEFINITIONS
+    "-DJUCE_ALSA=0"
+  EXTRA_COMPILER_FLAGS
+    "-fPIC"
+  PKGCONFIG_LIBRARIES
+    "webkit2gtk-4.0"
+  # VST3_SDK_FOLDER
+  #   "sdks/vst"
+  ICON_SMALL
+    "installer/resources/app-icon@1x.png"
+  ICON_LARGE
+    "installer/resources/app-icon@2x.png"
+)
+
+jucer_export_target_configuration(
+  "Linux Makefile"
+  NAME "Debug"
+  DEBUG_MODE ON
+)
+
+jucer_export_target_configuration(
+  "Linux Makefile"
   NAME "Release"
   DEBUG_MODE OFF
 )

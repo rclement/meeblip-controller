@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=${APP_NAME}
+Comment=${APP_DESCRIPTION}
+Exec=${APP_NAME_SAFE} %F
+Icon=appimage-icon
+Type=Application
+Categories=Audio;Utility;
