@@ -30,35 +30,42 @@ endif()
 set(APP_OUTPUT_DIR "${APP_BUILD_DIR}/installer/output")
 
 # generate template files
-configure_file(
-  "${APP_ROOT_DIR}/installer/meeblip-controller.pkgproj"
-  "${APP_BUILD_DIR}/installer/meeblip-controller.pkgproj"
-)
+if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Darwin")
+  configure_file(
+    "${APP_ROOT_DIR}/installer/meeblip-controller.pkgproj"
+    "${APP_BUILD_DIR}/installer/meeblip-controller.pkgproj"
+  )
 
-configure_file(
-  "${APP_ROOT_DIR}/installer/meeblip-controller.iss"
-  "${APP_BUILD_DIR}/installer/meeblip-controller.iss"
-)
+  configure_file(
+    "${APP_ROOT_DIR}/installer/resources/uninstall.command"
+    "${APP_BUILD_DIR}/installer/resources/uninstall.command"
+  )
+elseif(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
+  configure_file(
+    "${APP_ROOT_DIR}/installer/meeblip-controller.iss"
+    "${APP_BUILD_DIR}/installer/meeblip-controller.iss"
+  )
+elseif(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
+  configure_file(
+    "${APP_ROOT_DIR}/installer/meeblip-controller.sh"
+    "${APP_BUILD_DIR}/installer/meeblip-controller.sh"
+  )
 
-configure_file(
-  "${APP_ROOT_DIR}/installer/meeblip-controller.sh"
-  "${APP_BUILD_DIR}/installer/meeblip-controller.sh"
-)
+  configure_file(
+    "${APP_ROOT_DIR}/installer/resources/application.desktop.in"
+    "${APP_BUILD_DIR}/installer/resources/application.desktop"
+  )
 
-configure_file(
-  "${APP_ROOT_DIR}/installer/resources/application.desktop.in"
-  "${APP_BUILD_DIR}/installer/resources/application.desktop"
-)
+  configure_file(
+    "${APP_ROOT_DIR}/installer/resources/install.sh"
+    "${APP_BUILD_DIR}/installer/resources/install.sh"
+  )
 
-configure_file(
-  "${APP_ROOT_DIR}/installer/resources/install.sh"
-  "${APP_BUILD_DIR}/installer/resources/install.sh"
-)
-
-configure_file(
-  "${APP_ROOT_DIR}/installer/resources/uninstall.sh"
-  "${APP_BUILD_DIR}/installer/resources/uninstall.sh"
-)
+  configure_file(
+    "${APP_ROOT_DIR}/installer/resources/uninstall.sh"
+    "${APP_BUILD_DIR}/installer/resources/uninstall.sh"
+  )
+endif()
 
 project("${APP_NAME}")
 

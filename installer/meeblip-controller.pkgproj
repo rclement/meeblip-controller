@@ -2171,7 +2171,7 @@
 															<key>GID</key>
 															<integer>80</integer>
 															<key>PATH</key>
-															<string>${APP_ROOT_DIR}/installer/resources/uninstall.command</string>
+															<string>${APP_BUILD_DIR}/installer/resources/uninstall.command</string>
 															<key>PATH_TYPE</key>
 															<integer>0</integer>
 															<key>PERMISSIONS</key>
