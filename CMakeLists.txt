@@ -50,6 +50,16 @@ configure_file(
   "${APP_BUILD_DIR}/installer/resources/application.desktop"
 )
 
+configure_file(
+  "${APP_ROOT_DIR}/installer/resources/install.sh"
+  "${APP_BUILD_DIR}/installer/resources/install.sh"
+)
+
+configure_file(
+  "${APP_ROOT_DIR}/installer/resources/uninstall.sh"
+  "${APP_BUILD_DIR}/installer/resources/uninstall.sh"
+)
+
 project("${APP_NAME}")
 
 list(APPEND CMAKE_MODULE_PATH "${APP_ROOT_DIR}/sdks/frut/prefix/FRUT/cmake")

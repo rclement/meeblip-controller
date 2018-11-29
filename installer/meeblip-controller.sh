@@ -49,7 +49,7 @@ mkdir -p "${APP_OUTPUT_DIR}/licenses/juce"
 mkdir -p "${APP_OUTPUT_DIR}/licenses/pluginval"
 mkdir -p "${APP_OUTPUT_DIR}/licenses/vst"
 
-mv *.AppImage "${APP_OUTPUT_DIR}/${APP_OUTPUT_BASENAME}.AppImage"
+mv *.AppImage "${APP_OUTPUT_DIR}/${APP_NAME}.AppImage"
 cp "${APP_BUILD_DIR}/lib${APP_NAME}.so" "${APP_OUTPUT_DIR}/${APP_NAME}.so"
 cp -R "${APP_ROOT_DIR}/installer/presets" "${APP_OUTPUT_DIR}/presets"
 cp -R "${APP_ROOT_DIR}/LICENSE.txt" "${APP_OUTPUT_DIR}/licenses/LICENSE.txt"
@@ -58,4 +58,7 @@ cp -R "${APP_ROOT_DIR}/sdks/grape/LICENSE" "${APP_OUTPUT_DIR}/licenses/grape/LIC
 cp -R "${APP_ROOT_DIR}/sdks/juce/LICENSE.md" "${APP_OUTPUT_DIR}/licenses/juce/LICENSE.txt"
 cp -R "${APP_ROOT_DIR}/sdks/pluginval/LICENSE" "${APP_OUTPUT_DIR}/licenses/pluginval/LICENSE.txt"
 cp -R "${APP_ROOT_DIR}/sdks/vst/LICENSE.txt" "${APP_OUTPUT_DIR}/licenses/vst/LICENSE.txt"
+
+cp "${APP_BUILD_DIR}/installer/resources/install.sh" "${APP_OUTPUT_DIR}/install.sh"
+cp "${APP_BUILD_DIR}/installer/resources/uninstall.sh" "${APP_OUTPUT_DIR}/uninstall.sh"
 

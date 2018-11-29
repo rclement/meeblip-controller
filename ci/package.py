@@ -51,11 +51,15 @@ def _build_installer():
             build_path, 'installer', 'meeblip-controller.sh'
         )
 
+        run_cmd(
+            'sh "{installer_path}"'
+                .format(installer_path=installer_path)
+        )
+
         output_files = []
         for root, dirs, files in os.walk(installer_output_path):
             for f in files:
                 filepath = os.path.join(root, f)
-                print(filepath)
                 output_files.append(filepath)
 
     with zipfile.ZipFile(installer_output_arcname, 'w') as z:
