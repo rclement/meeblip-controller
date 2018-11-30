@@ -19,8 +19,11 @@ available on MacOS and Windows as an audio plug-in (VST, VST3, AU) and a standal
 
 Currently supported features:
 
-- Platforms: MacOS, Windows
-- Plug-in formats: VST2, VST3, AudioUnit
+- Platforms: MacOS, Windows, Linux
+- Plug-in formats:
+    - VST2 (MacOS, Windows, Linux)
+    - VST3 (MacOS, Windows)
+    - AudioUnit (MacOS)
 - Standalone application
 - Real-time parameters interaction
 - Access to "hidden" (MIDI only) parameters of the synthesizer
@@ -77,14 +80,15 @@ git python3 cmake clang freeglut3-dev libasound2-dev libcurl4-openssl-dev libfre
 ```
     mkdir -p build
     cd build
-    cmake .. -G ["XCode" | "Visual Studio 15 2017"] -A ["Win32" | "x64"]
+    cmake .. -G ["XCode" | "Visual Studio 15 2017" | "Unix Makefiles"] -A ["Win32" | "x64"] -DCMAKE_BUILD_TYPE=["Debug" | "Release"]
     cmake --build . --clean-first --config ["Debug" | "Release"]
 ```
 
 4. Build the installer
 
-- MacOS: `packagesbuild -v installer/meeblip-controller.pkgproj`
-- Windows: `iscc "installer\meeblip-controller.iss"`
+- MacOS: `packagesbuild -v build/installer/meeblip-controller.pkgproj`
+- Windows: `iscc "build\installer\meeblip-controller.iss"`
+- Linux: `sh "build/installer/meeblip-controller.sh"`
 
 
 # Acknowledgments
