@@ -19,7 +19,7 @@ AppCopyright            = Copyright (C) 2018 {#AppPublisher}
 LicenseFile             = {#AppRootDir}\LICENSE.txt
 DefaultDirName          = {commonappdata}\{#AppPublisher}\{#AppName}
 DisableDirPage          = yes
-DefaultGroupName        = {#AppPublisher}
+DefaultGroupName        = {#AppName}
 DisableProgramGroupPage = no
 OutputDir               = {#AppOutputDir}
 OutputBaseFilename      = {#AppOutputBaseName}
@@ -68,4 +68,9 @@ Source: "{#AppRootDir}\sdks\pluginval\LICENSE";     DestDir: "{app}\licenses\plu
 Source: "{#AppRootDir}\sdks\vst\LICENSE.txt";       DestDir: "{app}\licenses\vst";          DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 
 Source: "{#AppRootDir}\installer\presets\*";        DestDir: "{app}\presets"; Components: {#AppNameUnderscore}_required/factorypresets; Flags: ignoreversion createallsubdirs recursesubdirs overwritereadonly uninsremovereadonly skipifsourcedoesntexist;
+
+[Icons]
+Name: "{group}\{#AppName} (32-bit)";    Filename: "{pf32}\{#AppPublisher}\{#AppName}\{#AppName}.exe";
+Name: "{group}\{#AppName} (64-bit)";    Filename: "{pf64}\{#AppPublisher}\{#AppName}\{#AppName}.exe";
+Name: "{group}\Uninstall";              Filename: "{uninstallexe}"
 
