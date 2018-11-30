@@ -11,11 +11,15 @@ from common import (
 def _build_installer():
     build_path = os.path.abspath(build_dir)
 
+    installer_output_path = os.path.join(build_path, 'installer', 'output')
+    installer_output_appname = os.path.join(
+        installer_output_path, app_metadata['APP_NAME']
+    )
     installer_output_basename = os.path.join(
-        build_path, 'installer', 'output', app_metadata['APP_OUTPUT_BASENAME']
+        installer_output_path, app_metadata['APP_OUTPUT_BASENAME']
     )
 
-    installer_output_name = installer_output_basename
+    output_files = []
     installer_output_arcname = (
         installer_output_basename + '.zip'
     ).replace(' ', '_')
@@ -30,7 +34,7 @@ def _build_installer():
                 .format(installer_path=installer_path)
         )
 
-        installer_output_name += '.pkg'
+        output_files.append(installer_output_basename + '.pkg')
     elif platform_name == 'Windows':
         installer_path = os.path.join(
             build_path, 'installer', 'meeblip-controller.iss'
@@ -41,13 +45,26 @@ def _build_installer():
                 .format(installer_path=installer_path)
         )
 
-        installer_output_name += '.exe'
+        output_files = [installer_output_basename + '.exe']
+    elif platform_name == 'Linux':
+        installer_path = os.path.join(
+            build_path, 'installer', 'meeblip-controller.sh'
+        )
+
+        run_cmd(
+            'sh "{installer_path}"'
+                .format(installer_path=installer_path)
+        )
+
+        output_files = []
+        for root, dirs, files in os.walk(installer_output_path):
+            for f in files:
+                filepath = os.path.join(root, f)
+                output_files.append(filepath)
 
     with zipfile.ZipFile(installer_output_arcname, 'w') as z:
-        z.write(
-            installer_output_name,
-            os.path.basename(installer_output_name)
-        )
+        for of in output_files:
+            z.write(of, os.path.relpath(of, installer_output_path))
 
 
 def run():

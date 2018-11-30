@@ -19,7 +19,7 @@ AppCopyright            = Copyright (C) 2018 {#AppPublisher}
 LicenseFile             = {#AppRootDir}\LICENSE.txt
 DefaultDirName          = {commonappdata}\{#AppPublisher}\{#AppName}
 DisableDirPage          = yes
-DefaultGroupName        = {#AppPublisher}
+DefaultGroupName        = {#AppName}
 DisableProgramGroupPage = no
 OutputDir               = {#AppOutputDir}
 OutputBaseFilename      = {#AppOutputBaseName}
@@ -60,23 +60,17 @@ Source: "{#AppBuildDir}\x64\Release\VST\{#AppName}.dll";      DestDir: "{pf64}\S
 Source: "{#AppBuildDir}\Win32\Release\VST3\{#AppName}.vst3";   DestDir: "{cf32}\VST3"; DestName: "{#AppName}.vst3"; Components: {#AppNameUnderscore}/vst3_32; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 Source: "{#AppBuildDir}\x64\Release\VST3\{#AppName}.vst3";     DestDir: "{cf64}\VST3"; DestName: "{#AppName}.vst3"; Components: {#AppNameUnderscore}/vst3_64; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 
-Source: "{#AppRootDir}\LICENSE.txt";                DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses";              DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "{#AppRootDir}\LICENSE.txt";                DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses";              DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\LICENSE.txt";                DestDir: "{app}\licenses";              DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\sdks\frut\LICENSE";          DestDir: "{app}\licenses\frut";         DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\sdks\grape\LICENSE";         DestDir: "{app}\licenses\grape";        DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\sdks\juce\LICENSE.md";       DestDir: "{app}\licenses\juce";         DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\sdks\pluginval\LICENSE";     DestDir: "{app}\licenses\pluginval";    DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\sdks\vst\LICENSE.txt";       DestDir: "{app}\licenses\vst";          DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
 
-Source: "{#AppRootDir}\sdks\frut\LICENSE";          DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses\frut";         DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "{#AppRootDir}\sdks\frut\LICENSE";          DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses\frut";         DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
+Source: "{#AppRootDir}\installer\presets\*";        DestDir: "{app}\presets"; Components: {#AppNameUnderscore}_required/factorypresets; Flags: ignoreversion createallsubdirs recursesubdirs overwritereadonly uninsremovereadonly skipifsourcedoesntexist;
 
-Source: "{#AppRootDir}\sdks\grape\LICENSE";         DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses\grape";        DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "{#AppRootDir}\sdks\grape\LICENSE";         DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses\grape";        DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-
-Source: "{#AppRootDir}\sdks\juce\LICENSE.md";       DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses\juce";         DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "{#AppRootDir}\sdks\juce\LICENSE.md";       DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses\juce";         DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-
-Source: "{#AppRootDir}\sdks\pluginval\LICENSE";     DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses\pluginval";    DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "{#AppRootDir}\sdks\pluginval\LICENSE";     DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses\pluginval";    DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-
-Source: "{#AppRootDir}\sdks\vst\LICENSE.txt";       DestDir: "{pf32}\{#AppPublisher}\{#AppName}\licenses\vst";          DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-Source: "{#AppRootDir}\sdks\vst\LICENSE.txt";       DestDir: "{pf64}\{#AppPublisher}\{#AppName}\licenses\vst";          DestName: "LICENSE.txt"; Components: {#AppNameUnderscore}_required/licenses; Flags: ignoreversion overwritereadonly uninsremovereadonly;
-
-Source: "{#AppRootDir}\installer\presets\*"; DestDir: "{app}\presets"; Components: {#AppNameUnderscore}_required/factorypresets; Flags: ignoreversion createallsubdirs recursesubdirs overwritereadonly uninsremovereadonly skipifsourcedoesntexist;
+[Icons]
+Name: "{group}\{#AppName} (32-bit)";    Filename: "{pf32}\{#AppPublisher}\{#AppName}\{#AppName}.exe";
+Name: "{group}\{#AppName} (64-bit)";    Filename: "{pf64}\{#AppPublisher}\{#AppName}\{#AppName}.exe";
+Name: "{group}\Uninstall";              Filename: "{uninstallexe}"
 

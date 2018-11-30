@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2018-11-30
+### Added
+- Linux support for standalone app and VST plug-in ([#1](https://github.com/rclement/meeblip-controller/issues/1))
+
+### Changed
+- Add Linux build to Travis-CI
+
+### Fixed
+- Windows: InnoSetup installer top-right small icon
+- Windows: InnoSetup installer adds Start menu shortcuts for standalone and uninstaller
+
 ## [1.0.0] - 2018-11-21
 ### Added
 - Initial release of Meeblip Controller
@@ -13,5 +24,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Plug-in formats: VST2, VST3, AudioUnit
 - Standalone application
 
-[Unreleased]: https://github.com/rclement/meeblip-controller/compare/1.0.0...HEAD
+[Unreleased]: https://github.com/rclement/meeblip-controller/compare/1.0.1...HEAD
+[1.0.1]: https://github.com/rclement/meeblip-controller/compare/v1.0.0...v1.0.1
 
