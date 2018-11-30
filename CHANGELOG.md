@@ -25,5 +25,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Standalone application
 
 [Unreleased]: https://github.com/rclement/meeblip-controller/compare/1.0.1...HEAD
-[1.0.1]: https://github.com/rclement/meeblip-controller/compare/v1.0.0...v1.0.1
+[1.0.1]: https://github.com/rclement/meeblip-controller/compare/1.0.0...1.0.1
 
