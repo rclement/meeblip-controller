@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2018-11-30
+### Changed
+- Update README.md with Linux support
+
+### Fixed
+- Travis-CI and AppVeyor deploy config with non-empty description
+
 ## [1.0.1] - 2018-11-30
 ### Added
 - Linux support for standalone app and VST plug-in ([#1](https://github.com/rclement/meeblip-controller/issues/1))
@@ -24,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Plug-in formats: VST2, VST3, AudioUnit
 - Standalone application
 
-[Unreleased]: https://github.com/rclement/meeblip-controller/compare/1.0.1...HEAD
+[Unreleased]: https://github.com/rclement/meeblip-controller/compare/1.0.2...HEAD
+[1.0.2]: https://github.com/rclement/meeblip-controller/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/rclement/meeblip-controller/compare/1.0.0...1.0.1
 
