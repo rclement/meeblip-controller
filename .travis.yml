@@ -43,8 +43,8 @@ before_script:
 
 script:
   - cmake --version
-  - python3 --version
-  - python3 ci/all.py
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then python3.7 --version; else python3 --version; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then python3.7 ci/all.py: else python3 ci/all.py; fi
 
 deploy:
   provider: releases
