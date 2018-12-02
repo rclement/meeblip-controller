@@ -44,8 +44,8 @@ before_script:
 
 script:
   - cmake --version
-  - python3 --version
-  - python3 ci/all.py
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then python --version; else python3 --version; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then python ci/all.py; else python3 ci/all.py; fi
 
 deploy:
   provider: releases
