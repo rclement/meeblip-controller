@@ -50,7 +50,9 @@ deploy:
   name: 'Meeblip Controller ${TRAVIS_TAG}'
   body: 'Changelog'
   file_glob: true
-  file: 'build/installer/output/*.zip'
+  file:
+    - 'build/installer/output/*.zip'
+    - 'build/installer/output/*.AppImage'
   skip_cleanup: true
   draft: true
   prerelease: false
