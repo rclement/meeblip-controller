@@ -12,7 +12,7 @@ matrix:
           casks:
             - packages
     - os: linux
-      dist: xenial
+      dist: trusty
       sudo: required
       python: '3.7'
       addons:
