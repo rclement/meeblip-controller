@@ -17,7 +17,10 @@ matrix:
       python: '3.7'
       addons:
         apt:
+          sources:
+            - sourceline: 'ppa:deadsnakes/ppa'
           packages:
+            - python3.7
             - clang
             - freeglut3-dev
             - libasound2-dev
@@ -34,9 +37,6 @@ matrix:
             - ladspa-sdk
 
 before_script:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo add-apt-repository ppa:deadsnakes/ppa -y   ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -q                          ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install python3.7 -y               ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0                            ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sh -e /etc/init.d/xvfb start                    ; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sleep 3                                         ; fi
