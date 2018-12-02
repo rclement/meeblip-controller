@@ -32,6 +32,10 @@ matrix:
             - mesa-common-dev
             - libwebkit2gtk-4.0-dev
             - ladspa-sdk
+    - os: windows
+
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install -y python innosetup; fi
 
 before_script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0          ; fi
